@@ -41,10 +41,10 @@ echo '背景修改'
 mv diyTVBOX/TVBox/img/bg/app_bg.png app/src/main/res/drawable/app_bg.png
 
 #播放界面修改 1.底部控件重排 2.直播增加分辨率显示
-cp xmljava/activity_live_play.xml app/src/main/res/layout/activity_live_play.xml
-cp xmljava/player_vod_control_view.xml app/src/main/res/layout/player_vod_control_view.xml
-cp xmljava/VodController.java app/src/main/java/com/github/tvbox/osc/player/controller/VodController.java
-cp xmljava/LivePlayActivity.java app/src/main/java/com/github/tvbox/osc/ui/activity/LivePlayActivity.java
+cp diyTVBOX/TVBox/xmljava/activity_live_play.xml app/src/main/res/layout/activity_live_play.xml
+cp diyTVBOX/TVBox/xmljava/player_vod_control_view.xml app/src/main/res/layout/player_vod_control_view.xml
+cp diyTVBOX/TVBox/xmljava/VodController.java app/src/main/java/com/github/tvbox/osc/player/controller/VodController.java
+cp diyTVBOX/TVBox/xmljava/LivePlayActivity.java app/src/main/java/com/github/tvbox/osc/ui/activity/LivePlayActivity.java
 
 #修改播放器进度条消失时间
 sed -i 's/10000/6000/g'  app/src/main/java/com/github/tvbox/osc/player/controller/VodController.java
@@ -69,12 +69,10 @@ signingConfig='ICAgICAgICAgICAgaWYgKHByb2plY3QuaGFzUHJvcGVydHkoIlJFTEVBU0VfU1RPU
 signingConfigs="$(echo "$signingConfigs" |base64 -d )"
 signingConfig="$(echo "$signingConfig" |base64 -d )"
 sed -i -e "/defaultConfig {/i\\$signingConfigs " -e "/debug {/a\\$signingConfig " -e "/release {/a\\$signingConfig " app/build.gradle
-cp -f $CURRENT_DIR/TVBox/DIY/TVBoxOSC.jks app/TVBoxOSC.jks
-cp -f $CURRENT_DIR/TVBox/DIY/TVBoxOSC.jks $CURRENT_DIR/$DIR/TVBoxOSC.jks
-echo "" >>$CURRENT_DIR/$DIR/gradle.properties
-echo "RELEASE_STORE_FILE=./TVBoxOSC.jks" >>$CURRENT_DIR/$DIR/gradle.properties
-echo "RELEASE_KEY_ALIAS=TVBoxOSC" >>$CURRENT_DIR/$DIR/gradle.properties
-echo "RELEASE_STORE_PASSWORD=TVBoxOSC" >>$CURRENT_DIR/$DIR/gradle.properties
-echo "RELEASE_KEY_PASSWORD=TVBoxOSC" >>$CURRENT_DIR/$DIR/gradle.properties
+cp -f diyTVBOX/TVBox/TVBoxOSC.jks app/TVBoxOSC.jks
+sed -i '$a\RELEASE_STORE_FILE=./TVBoxOSC.jks'     ./gradle.properties
+sed -i '$a\RELEASE_KEY_ALIAS=TVBoxOSC'            ./gradle.properties
+sed -i '$a\RELEASE_STORE_PASSWORD=TVBoxOSC'       ./gradle.properties
+sed -i '$a\RELEASE_KEY_PASSWORD=TVBoxOSC'         ./gradle.properties
 echo 'DIY 完成'
 EOF
