@@ -33,20 +33,18 @@ sed -i 's/TVBox/QTM影视/g' app/src/main/res/raw/index.html
 echo '软件名称修改'
 sed -i 's/TVBox/QTM影视/g' app/src/main/res/values/strings.xml
 echo '图标修改'
-mv $CURRENT_DIR/TVBox/DIY/PNG/a/app_icon.png app/src/main/res/drawable-hdpi/app_icon.png
-mv $CURRENT_DIR/TVBox/DIY/PNG/b/app_icon.png app/src/main/res/drawable-xhdpi/app_icon.png
-mv $CURRENT_DIR/TVBox/DIY/PNG/c/app_icon.png app/src/main/res/drawable-xxhdpi/app_icon.png
-mv $CURRENT_DIR/TVBox/DIY/PNG/d/app_icon.png app/src/main/res/drawable-xxxhdpi/app_icon.png
+mv diyTVBOX/TVBox/img/a/app_icon.png app/src/main/res/drawable-hdpi/app_icon.png
+mv diyTVBOX/TVBox/img/b/app_icon.png app/src/main/res/drawable-xhdpi/app_icon.png
+mv diyTVBOX/TVBox/img/c/app_icon.png app/src/main/res/drawable-xxhdpi/app_icon.png
+mv diyTVBOX/TVBox/img/d/app_icon.png app/src/main/res/drawable-xxxhdpi/app_icon.png
 echo '背景修改'
-#mv -f app/src/main/res/drawable/app_bg.png app/src/main/res/drawable/app_bg2.png
-mv $CURRENT_DIR/TVBox/DIY/PNG/bg/app_bg.png app/src/main/res/drawable/app_bg.png
-#cp -f $CURRENT_DIR/TVBox/DIY/PNG/bg_a/app_bg.png app/src/main/res/drawable/app_bg1.png
+mv diyTVBOX/TVBox/img/bg/app_bg.png app/src/main/res/drawable/app_bg.png
 
 #播放界面修改 1.底部控件重排 2.直播增加分辨率显示
-cp $CURRENT_DIR/TVBox/q215613905/J/activity_live_play.xml app/src/main/res/layout/activity_live_play.xml
-cp $CURRENT_DIR/TVBox/q215613905/J/player_vod_control_view.xml app/src/main/res/layout/player_vod_control_view.xml
-cp $CURRENT_DIR/TVBox/q215613905/J/VodController.java app/src/main/java/com/github/tvbox/osc/player/controller/VodController.java
-cp $CURRENT_DIR/TVBox/q215613905/J/LivePlayActivity.java app/src/main/java/com/github/tvbox/osc/ui/activity/LivePlayActivity.java
+cp xmljava/activity_live_play.xml app/src/main/res/layout/activity_live_play.xml
+cp xmljava/player_vod_control_view.xml app/src/main/res/layout/player_vod_control_view.xml
+cp xmljava/VodController.java app/src/main/java/com/github/tvbox/osc/player/controller/VodController.java
+cp xmljava/LivePlayActivity.java app/src/main/java/com/github/tvbox/osc/ui/activity/LivePlayActivity.java
 
 #修改播放器进度条消失时间
 sed -i 's/10000/6000/g'  app/src/main/java/com/github/tvbox/osc/player/controller/VodController.java
