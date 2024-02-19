@@ -1,6 +1,6 @@
 #!/bin/bash
 git clone https://github.com/q215613905/TVBoxOS TVBoxOSC
-
+chmod +x ./TVBoxOSC
 cat << 'EOF' > ./config.sh
 #!/bin/bash
 echo 'crosswalk源，防挂'
