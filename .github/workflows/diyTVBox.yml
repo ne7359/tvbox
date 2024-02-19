@@ -28,27 +28,34 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: 拉取 DIY 文件
+      - name: Clone project
         run: |
-          git clone https://github.com/ne7359/tvbox diyTVBOX
+          git clone https://github.com/ne7359/tvbox.git diyTVBOX
 
-      - name: 运行 DIY
+      - name: diyTVBOX
         run: |
-          cp -rf diyTVBOX/tvbox/${{ inputs.source_branch }}/diy.sh diy.sh
-          chmod +x diy.sh
-          source diy.sh
-          source config.sh
-          cd TVBoxOSC
-          echo PWD=$PWD >> $GITHUB_ENV
+          cd diyTVBOX
+          chmod +x TVBox/${{ inputs.source_branch }}/diy.sh
+          source TVBox/${{ inputs.source_branch }}/diy.sh
+          source ./config.sh
+          cd
+
+      - name: 压缩源代码
+        working-directory: TVBoxOSC
+        run: |
+          #zip -q -x ".git/*" -x  ".github/*" -r source-${{ env.commitS }}.zip .
+          tar -cJf source-${{ env.commitS }}.tar.xz --exclude=.git --exclude=.github *
 
       - name: 测试选项
         if: ${{ inputs.testOption }}
+        working-directory: TVBoxOSC
         run: |
           #添加arm64支持，不支持ijk解码
           sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" app/build.gradle
           sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" player/build.gradle
 
       - name: 检查JAVA版本
+        working-directory: TVBoxOSC
         run: |
           setup_java_ver=$(grep -o 'JavaVersion.VERSION_[0-9_]\+' app/build.gradle |head -1 |sed 's/.*_//')
           if [ $setup_java_ver -gt 11 ]; then
@@ -60,11 +67,13 @@ jobs:
           distribution: temurin
           java-version: ${{ env.setup_java_ver }}
       - uses: gradle/gradle-build-action@v2
+        if: ${{ env.commit }}
 
       - name: 使用 Gradle 构建
+        working-directory: TVBoxOSC
         run: |
           chmod +x gradlew
-          ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode all
+          ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode alll
 
       - name: 添加编译时间
         run: |
