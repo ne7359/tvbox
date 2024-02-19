@@ -40,12 +40,6 @@ jobs:
           source ./config.sh
           cd TVBoxOSC
 
-      - name: 压缩源代码
-        working-directory: TVBoxOSC
-        run: |
-          #zip -q -x ".git/*" -x  ".github/*" -r source-${{ env.commitS }}.zip .
-          tar -cJf source-${{ env.commitS }}.tar.xz --exclude=.git --exclude=.github *
-
       - name: 测试选项
         if: ${{ inputs.testOption }}
         working-directory: TVBoxOSC
