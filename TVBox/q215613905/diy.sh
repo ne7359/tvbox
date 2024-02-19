@@ -16,7 +16,7 @@ echo '关于更改'
 sed -i '/android:text=/d' TVBoxOSC/app/src/main/res/layout/dialog_about.xml
 sed -i '/ingMultiplier=/a\        android:text="        本软件只提供聚合展示功能，所有资源来自网上, 软件不参与任何制作, 上传, 储存, 下载等内容. 软件仅供学习参考, 请于安装后24小时内删除。\\n\\n\\n                                                                    QTM 编译"' TVBoxOSC/app/src/main/res/layout/dialog_about.xml
 echo '关于插入版本号'
-sed -i "/versionName/s#[0-9a-zA-Z_\.\'\"-]\+\$#\'版本号：2023.12\'#" TVBoxOSC/app/build.gradle
+sed -i "/versionName/s#[0-9a-zA-Z_\.\'\"-]\+\$#\'版本号：${{ env.FILE_TIME }}\'#" TVBoxOSC/app/build.gradle
 sed -i "/android:text=/s#=\"#=\"版本号：2023.12\\\\n\\\\n#" TVBoxOSC/app/src/main/res/layout/dialog_about.xml 
 echo '修改请勿商用以及播放违法内容'
 sed -i 's/开源测试软件,请勿商用以及播放违法内容/请勿商用以及播放违法内容/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/LivePlayActivity.java
