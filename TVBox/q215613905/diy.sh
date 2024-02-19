@@ -32,19 +32,6 @@ echo '修改远程管理首页名'
 sed -i 's/TVBox/QTM影视/g' TVBoxOSC/app/src/main/res/raw/index.html
 echo '软件名称修改'
 sed -i 's/TVBox/QTM影视/g' TVBoxOSC/app/src/main/res/values/strings.xml
-echo '图标修改'
-mv TVBox/img/a/app_icon.png TVBoxOSC/app/src/main/res/drawable-hdpi/app_icon.png
-mv TVBox/img/b/app_icon.png TVBoxOSC/app/src/main/res/drawable-xhdpi/app_icon.png
-mv TVBox/img/c/app_icon.png TVBoxOSC/app/src/main/res/drawable-xxhdpi/app_icon.png
-mv TVBox/img/d/app_icon.png TVBoxOSC/app/src/main/res/drawable-xxxhdpi/app_icon.png
-echo '背景修改'
-mv TVBox/img/bg/app_bg.png TVBoxOSC/app/src/main/res/drawable/app_bg.png
-
-#播放界面修改 1.底部控件重排 2.直播增加分辨率显示
-cp TVBox/xmljava/activity_live_play.xml TVBoxOSC/app/src/main/res/layout/activity_live_play.xml
-cp TVBox/xmljava/player_vod_control_view.xml TVBoxOSC/app/src/main/res/layout/player_vod_control_view.xml
-cp TVBox/xmljava/VodController.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/player/controller/VodController.java
-cp TVBox/xmljava/LivePlayActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/LivePlayActivity.java
 
 #修改播放器进度条消失时间
 sed -i 's/10000/6000/g'  TVBoxOSC/app/src/main/java/com/github/tvbox/osc/player/controller/VodController.java
