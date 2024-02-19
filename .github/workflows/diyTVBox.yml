@@ -47,7 +47,6 @@ jobs:
           #添加arm64支持，不支持ijk解码
           sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" app/build.gradle
           sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" player/build.gradle
-          cd
 
       - uses: gradle/gradle-build-action@v2
 
@@ -55,7 +54,7 @@ jobs:
         working-directory: diyTVBOX/TVBoxOSC
         run: |
           chmod +x gradlew
-          ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode alll
+          ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode all
 
       - name: 添加编译时间
         working-directory: diyTVBOX/TVBoxOSC
