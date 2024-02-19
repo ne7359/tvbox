@@ -38,11 +38,12 @@ jobs:
           chmod +x TVBox/${{ inputs.source_branch }}/diy.sh
           source TVBox/${{ inputs.source_branch }}/diy.sh
           source ./config.sh
-          cd
+          cd TVBoxOSC
+          echo PWD=$PWD >> $GITHUB_ENV
 
       - name: 测试选项
         if: ${{ inputs.testOption }}
-        working-directory: diyTVBOX/TVBoxOSC
+        working-directory: $PWD
         run: |
           #添加arm64支持，不支持ijk解码
           sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" app/build.gradle
@@ -52,18 +53,19 @@ jobs:
       - uses: gradle/gradle-build-action@v2
 
       - name: 使用 Gradle 构建
+        working-directory: $PWD
         run: |
-          working-directory: diyTVBOX/TVBoxOSC
           chmod +x gradlew
           ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode alll
 
       - name: 添加编译时间
+        working-directory: $PWD
         run: |
             echo "FILE_TIME=$(date "+%Y年%m月%d日-%H点%M分")" >> $GITHUB_ENV
 
       - name: 准备应用程序
+        working-directory: $PWD
         run: |
-          working-directory: diyTVBOX/TVBoxOSC
           rm -rf apk/
           mkdir -p apk/
           for file in `find ~ -name "*release*.apk" -print`; do
