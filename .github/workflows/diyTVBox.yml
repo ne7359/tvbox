@@ -42,22 +42,24 @@ jobs:
 
       - name: 压缩源代码
         run: |
-          cd TVBoxOSC
+          cd diyTVBOX/TVBoxOSC
           #zip -q -x ".git/*" -x  ".github/*" -r source-*.zip .
           tar -cJf source-*.tar.xz --exclude=.git --exclude=.github *
+          cd
 
       - name: 测试选项
         if: ${{ inputs.testOption }}
         working-directory: TVBoxOSC
         run: |
-          cd TVBoxOSC
+          cd diyTVBOX/TVBoxOSC
           #添加arm64支持，不支持ijk解码
           sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" app/build.gradle
           sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" player/build.gradle
+          cd
 
       - name: 检查JAVA版本
         run: |
-          cd TVBoxOSC
+          cd diyTVBOX/TVBoxOSC
           setup_java_ver=$(grep -o 'JavaVersion.VERSION_[0-9_]\+' app/build.gradle |head -1 |sed 's/.*_//')
           if [ $setup_java_ver -gt 11 ]; then
             echo "setup_java_ver=$setup_java_ver" >> $GITHUB_ENV
@@ -71,7 +73,7 @@ jobs:
 
       - name: 使用 Gradle 构建
         run: |
-          cd TVBoxOSC
+          cd && cd diyTVBOX/TVBoxOSC
           chmod +x gradlew
           ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode alll
 
@@ -81,6 +83,7 @@ jobs:
 
       - name: 准备应用程序
         run: |
+          cd && cd diyTVBOX/TVBoxOSC
           rm -rf apk/
           mkdir -p apk/
           for file in `find ~ -name "*release*.apk" -print`; do
