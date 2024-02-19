@@ -39,7 +39,6 @@ jobs:
           source TVBox/${{ inputs.source_branch }}/diy.sh
           source ./config.sh
           cd
-          echo PWD=$PWD >> $GITHUB_ENV
 
       - name: 测试选项
         if: ${{ inputs.testOption }}
