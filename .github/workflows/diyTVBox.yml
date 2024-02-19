@@ -49,6 +49,9 @@ jobs:
           sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" player/build.gradle
           cd
 
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+
       - name: 使用 Gradle 构建
         run: |
           cd diyTVBOX/TVBoxOSC
