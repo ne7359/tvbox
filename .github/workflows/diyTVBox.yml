@@ -32,7 +32,7 @@ jobs:
         run: |
           git clone https://github.com/ne7359/tvbox.git diyTVBOX
 
-      - name: 更改源代码
+      - name: DIY 源代码
         run: |
           cd diyTVBOX
           chmod +x TVBox/${{ inputs.source_branch }}/diy.sh
