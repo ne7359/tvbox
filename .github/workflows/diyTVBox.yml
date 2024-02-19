@@ -1,4 +1,4 @@
-name: diyTVBox
+name: 编译TVBox-APK
 
 on:
   workflow_dispatch:
@@ -28,11 +28,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Clone project
+      - name: 拉取 DIY 文件
         run: |
           git clone https://github.com/ne7359/tvbox.git diyTVBOX
 
-      - name: diyTVBOX
+      - name: 运行 DIY
         run: |
           cd diyTVBOX
           chmod +x TVBox/${{ inputs.source_branch }}/diy.sh
@@ -75,6 +75,10 @@ jobs:
           chmod +x gradlew
           ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode all
 
+      - name: 添加编译时间
+        run: |
+            echo "FILE_TIME=$(date "+%Y年%m月%d日-%H点%M分")" >> $GITHUB_ENV
+
       - name: 准备应用程序
         working-directory: TVBoxOSC
         run: |
@@ -85,12 +89,17 @@ jobs:
           done
 
       - name: 上传 APK 到 Release
-        uses: ncipollo/release-action@v1
+        uses: ncipollo/release-action@main
+        env:
+           GITHUB_TOKEN: ${{ secrets.GIT_USER_TOKEN }}
         with:
           name: QTM影视
+          tag: ${{ env.FILE_TIME }}
           allowUpdates: true
           removeArtifacts: true
-          tag: |
-
+          body: |
+            编译源：${{ inputs.source_branch }}
+            🎈 编译时间：${{ env.FILE_TIME }}
+            ⏰ 编译用时：${{ env.BUILD_TIME }}
           artifacts: |
             TVBoxOSC/apk/*.apk
