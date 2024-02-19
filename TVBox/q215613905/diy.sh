@@ -1,7 +1,7 @@
 #!/bin/bash
 git clone https://github.com/q215613905/TVBoxOS TVBoxOSC
 
-cat << 'EOF' > TVBoxOSC/.config
+cat << 'EOF' > ./config.sh
 #!/bin/bash
 echo 'crosswalk源，防挂'
 if grep -q 'crosswalk' build.gradle; then
@@ -76,3 +76,4 @@ sed -i '$a\RELEASE_STORE_PASSWORD=TVBoxOSC'       ./gradle.properties
 sed -i '$a\RELEASE_KEY_PASSWORD=TVBoxOSC'         ./gradle.properties
 echo 'DIY 完成'
 EOF
+chmod +x ./config.sh
