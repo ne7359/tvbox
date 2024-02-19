@@ -41,10 +41,10 @@ echo '背景修改'
 mv TVBox/img/bg/app_bg.png TVBoxOSC/app/src/main/res/drawable/app_bg.png
 
 #播放界面修改 1.底部控件重排 2.直播增加分辨率显示
-cp TVBox/xmljava/activity_live_play.xml TVBoxOSC/app/src/main/res/layout/activity_live_play.xml
-cp TVBox/xmljava/player_vod_control_view.xml TVBoxOSC/app/src/main/res/layout/player_vod_control_view.xml
+# cp TVBox/xmljava/activity_live_play.xml TVBoxOSC/app/src/main/res/layout/activity_live_play.xml
+# cp TVBox/xmljava/player_vod_control_view.xml TVBoxOSC/app/src/main/res/layout/player_vod_control_view.xml
 # cp TVBox/xmljava/VodController.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/player/controller/VodController.java
-cp TVBox/xmljava/LivePlayActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/LivePlayActivity.java
+# cp TVBox/xmljava/LivePlayActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/LivePlayActivity.java
 
 #修改播放器进度条消失时间
 sed -i 's/10000/6000/g'  TVBoxOSC/app/src/main/java/com/github/tvbox/osc/player/controller/VodController.java
@@ -57,7 +57,7 @@ sed -i 's/color_BBFFFFFF/color_FFFFFF/g' TVBoxOSC/app/src/main/java/com/github/t
 sed -i 's/color_353744/color_1890FF/g' TVBoxOSC/app/src/main/res/drawable/shape_player_control_vod_seek.xml
 
 #长按倍速修改为2
-sed -i 's/3.0/2.0/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/player/controller/VodController.java
+# sed -i 's/3.0/2.0/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/player/controller/VodController.java
 
 #FongMi的jar支持
 echo "" >> TVBoxOSC/app/proguard-rules.pro
