@@ -40,13 +40,6 @@ jobs:
           source ./config.sh
           cd
 
-      - name: 压缩源代码
-        run: |
-          cd diyTVBOX/TVBoxOSC
-          #zip -q -x ".git/*" -x  ".github/*" -r source-*.zip .
-          tar -cJf source-*.tar.xz --exclude=.git --exclude=.github *
-          cd
-
       - name: 测试选项
         if: ${{ inputs.testOption }}
         working-directory: TVBoxOSC
@@ -61,9 +54,9 @@ jobs:
 
       - name: 使用 Gradle 构建
         run: |
-          cd diyTVBOX/TVBoxOSC
-          chmod +x gradlew
-          ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode alll
+            cd diyTVBOX/TVBoxOSC
+            chmod +x gradlew
+            ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode alll
 
       - name: 添加编译时间
         run: |
