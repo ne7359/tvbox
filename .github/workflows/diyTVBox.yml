@@ -38,7 +38,8 @@ jobs:
           chmod +x TVBox/${{ inputs.source_branch }}/diy.sh
           source TVBox/${{ inputs.source_branch }}/diy.sh
           source ./config.sh
-          cd
+          cd && 
+          cd diyTVBOX/TVBoxOSC
 
       - name: 测试选项
         if: ${{ inputs.testOption }}
@@ -47,8 +48,6 @@ jobs:
           #添加arm64支持，不支持ijk解码
           sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" app/build.gradle
           sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" player/build.gradle
-          cd && 
-          cd diyTVBOX/TVBoxOSC
 
       - name: 检查JAVA版本
         run: |
