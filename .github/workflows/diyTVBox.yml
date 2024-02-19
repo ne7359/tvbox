@@ -31,7 +31,7 @@ jobs:
       - name: 拉取 DIY 文件
         run: |
           #git clone https://github.com/ne7359/tvbox.git diyTVBOX
-          cp -rf ./TVBox
+          cp -rf ./TVBox TVBox
 
       - name: 运行 DIY
         run: |
