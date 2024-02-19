@@ -38,8 +38,6 @@ jobs:
           chmod +x TVBox/${{ inputs.source_branch }}/diy.sh
           source TVBox/${{ inputs.source_branch }}/diy.sh
           source ./config.sh
-          cd TVBoxOSC
-          echo PWD=$PWD >> $GITHUB_ENV
 
       - name: 测试选项
         if: ${{ inputs.testOption }}
@@ -64,6 +62,7 @@ jobs:
 
       - name: 使用 Gradle 构建
         run: |
+          cd diyTVBOX/TVBoxOSC
           chmod +x gradlew
           ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode all
 
