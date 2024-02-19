@@ -59,7 +59,7 @@ jobs:
           ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode alll
 
       - name: 添加编译时间
-        working-directory: $PWD
+        working-directory: diyTVBOX/TVBoxOSC
         run: |
             echo "FILE_TIME=$(date "+%Y年%m月%d日-%H点%M分")" >> $GITHUB_ENV
 
