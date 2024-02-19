@@ -82,7 +82,6 @@ jobs:
 
       - name: 准备应用程序
         run: |
-          cd && cd diyTVBOX/TVBoxOSC
           rm -rf apk/
           mkdir -p apk/
           for file in `find ~ -name "*release*.apk" -print`; do
