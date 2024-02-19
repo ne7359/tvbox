@@ -34,11 +34,12 @@ jobs:
 
       - name: 运行 DIY
         run: |
-          cd tvbox
-          chmod +x ./${{ inputs.source_branch }}/diy.sh
-          source ./${{ inputs.source_branch }}/diy.sh
+          cp -rf tvbox/${{ inputs.source_branch }}/diy.sh diy.sh
+          chmod +x ./diy.sh
+          source ./diy.sh
           source ./config.sh
-          cd && cd TVBoxOSC
+          cd TVBoxOSC
+          echo PWD=$PWD >> $GITHUB_ENV
 
       - name: 测试选项
         if: ${{ inputs.testOption }}
