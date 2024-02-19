@@ -1,5 +1,5 @@
 #!/bin/bash
-git clone https://github.com/q215613905/TVBoxOS TVBoxOSC
+git clone -b main --depth=1 https://github.com/q215613905/TVBoxOS TVBoxOSC
 chmod +x ./TVBoxOSC
 cat << 'EOF' > ./config.sh
 #!/bin/bash
