@@ -30,14 +30,14 @@ jobs:
         uses: actions/checkout@v4
       - name: 拉取 DIY 文件
         run: |
-          git clone https://github.com/ne7359/tvbox.git
+          git clone https://github.com/ne7359/tvbox diyTVBOX
 
       - name: 运行 DIY
         run: |
-          cp -rf tvbox/${{ inputs.source_branch }}/diy.sh diy.sh
-          chmod +x ./diy.sh
-          source ./diy.sh
-          source ./config.sh
+          cp -rf diyTVBOX/tvbox/${{ inputs.source_branch }}/diy.sh diy.sh
+          chmod +x diy.sh
+          source diy.sh
+          source config.sh
           cd TVBoxOSC
           echo PWD=$PWD >> $GITHUB_ENV
 
