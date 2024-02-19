@@ -41,22 +41,23 @@ jobs:
           cd
 
       - name: 压缩源代码
-        working-directory: TVBoxOSC
         run: |
-          #zip -q -x ".git/*" -x  ".github/*" -r source-${{ env.commitS }}.zip .
-          tar -cJf source-${{ env.commitS }}.tar.xz --exclude=.git --exclude=.github *
+          cd TVBoxOSC
+          #zip -q -x ".git/*" -x  ".github/*" -r source-*.zip .
+          tar -cJf source-*.tar.xz --exclude=.git --exclude=.github *
 
       - name: 测试选项
         if: ${{ inputs.testOption }}
         working-directory: TVBoxOSC
         run: |
+          cd TVBoxOSC
           #添加arm64支持，不支持ijk解码
           sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" app/build.gradle
           sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" player/build.gradle
 
       - name: 检查JAVA版本
-        working-directory: TVBoxOSC
         run: |
+          cd TVBoxOSC
           setup_java_ver=$(grep -o 'JavaVersion.VERSION_[0-9_]\+' app/build.gradle |head -1 |sed 's/.*_//')
           if [ $setup_java_ver -gt 11 ]; then
             echo "setup_java_ver=$setup_java_ver" >> $GITHUB_ENV
@@ -70,8 +71,8 @@ jobs:
         if: ${{ env.commit }}
 
       - name: 使用 Gradle 构建
-        working-directory: TVBoxOSC
         run: |
+          cd TVBoxOSC
           chmod +x gradlew
           ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode alll
 
@@ -80,7 +81,6 @@ jobs:
             echo "FILE_TIME=$(date "+%Y年%m月%d日-%H点%M分")" >> $GITHUB_ENV
 
       - name: 准备应用程序
-        working-directory: TVBoxOSC
         run: |
           rm -rf apk/
           mkdir -p apk/
