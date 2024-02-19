@@ -28,11 +28,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Clone project
+      - name: 获取 DIY 配置
         run: |
           git clone https://github.com/ne7359/tvbox.git diyTVBOX
 
-      - name: diyTVBOX
+      - name: 更改源代码
         run: |
           cd diyTVBOX
           chmod +x TVBox/${{ inputs.source_branch }}/diy.sh
@@ -47,8 +47,9 @@ jobs:
           #添加arm64支持，不支持ijk解码
           sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" app/build.gradle
           sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" player/build.gradle
-
-      - uses: gradle/gradle-build-action@v2
+          
+      - name: 安装 Gradle
+        uses: gradle/gradle-build-action@v3
 
       - name: 使用 Gradle 构建
         working-directory: diyTVBOX/TVBoxOSC
@@ -67,7 +68,7 @@ jobs:
           rm -rf apk/
           mkdir -p apk/
           for file in `find ~ -name "*release*.apk" -print`; do
-            mv "$file" apk/QTMTv.apk
+            mv "$file" apk/QTM影视.apk
           done
 
       - name: 上传 APK 到 Release
@@ -84,4 +85,4 @@ jobs:
             🎈 编译时间：${{ env.FILE_TIME }}
             ⏰ 编译用时：${{ env.BUILD_TIME }}
           artifacts: |
-            TVBoxOSC/apk/*.apk
+            diyTVBOX/TVBoxOSC/apk/*.apk
