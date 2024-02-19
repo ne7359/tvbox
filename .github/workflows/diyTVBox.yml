@@ -38,7 +38,7 @@ jobs:
           chmod +x TVBox/${{ inputs.source_branch }}/diy.sh
           source TVBox/${{ inputs.source_branch }}/diy.sh
           source ./config.sh
-          cd && cd ./diyTVBOX/TVBoxOSC
+          cd TVBoxOSC
 
       - name: 压缩源代码
         working-directory: TVBoxOSC
