@@ -33,18 +33,18 @@ sed -i 's/TVBox/QTM影视/g' TVBoxOSC/app/src/main/res/raw/index.html
 echo '软件名称修改'
 sed -i 's/TVBox/QTM影视/g' TVBoxOSC/app/src/main/res/values/strings.xml
 echo '图标修改'
-mv TVBox/img/a/app_icon.png TVBoxOSC/app/src/main/res/drawable-hdpi/app_icon.png
-mv TVBox/img/b/app_icon.png TVBoxOSC/app/src/main/res/drawable-xhdpi/app_icon.png
-mv TVBox/img/c/app_icon.png TVBoxOSC/app/src/main/res/drawable-xxhdpi/app_icon.png
-mv TVBox/img/d/app_icon.png TVBoxOSC/app/src/main/res/drawable-xxxhdpi/app_icon.png
+mv diyTVBOX/TVBox/img/a/app_icon.png TVBoxOSC/app/src/main/res/drawable-hdpi/app_icon.png
+mv diyTVBOX/TVBox/img/b/app_icon.png TVBoxOSC/app/src/main/res/drawable-xhdpi/app_icon.png
+mv diyTVBOX/TVBox/img/c/app_icon.png TVBoxOSC/app/src/main/res/drawable-xxhdpi/app_icon.png
+mv diyTVBOX/TVBox/img/d/app_icon.png TVBoxOSC/app/src/main/res/drawable-xxxhdpi/app_icon.png
 echo '背景修改'
-mv TVBox/img/bg/app_bg.png TVBoxOSC/app/src/main/res/drawable/app_bg.png
+mv diyTVBOX/TVBox/img/bg/app_bg.png TVBoxOSC/app/src/main/res/drawable/app_bg.png
 
 #播放界面修改 1.底部控件重排 2.直播增加分辨率显示
-cp TVBox/xmljava/activity_live_play.xml TVBoxOSC/app/src/main/res/layout/activity_live_play.xml
-cp TVBox/xmljava/player_vod_control_view.xml TVBoxOSC/app/src/main/res/layout/player_vod_control_view.xml
-cp TVBox/xmljava/VodController.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/player/controller/VodController.java
-cp TVBox/xmljava/LivePlayActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/LivePlayActivity.java
+cp diyTVBOX/TVBox/xmljava/activity_live_play.xml TVBoxOSC/app/src/main/res/layout/activity_live_play.xml
+cp diyTVBOX/TVBox/xmljava/player_vod_control_view.xml TVBoxOSC/app/src/main/res/layout/player_vod_control_view.xml
+cp diyTVBOX/TVBox/xmljava/VodController.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/player/controller/VodController.java
+cp diyTVBOX/TVBox/xmljava/LivePlayActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/LivePlayActivity.java
 
 #修改播放器进度条消失时间
 sed -i 's/10000/6000/g'  TVBoxOSC/app/src/main/java/com/github/tvbox/osc/player/controller/VodController.java
@@ -69,7 +69,7 @@ signingConfig='ICAgICAgICAgICAgaWYgKHByb2plY3QuaGFzUHJvcGVydHkoIlJFTEVBU0VfU1RPU
 signingConfigs="$(echo "$signingConfigs" |base64 -d )"
 signingConfig="$(echo "$signingConfig" |base64 -d )"
 sed -i -e "/defaultConfig {/i\\$signingConfigs " -e "/debug {/a\\$signingConfig " -e "/release {/a\\$signingConfig " TVBoxOSC/app/build.gradle
-cp -f TVBox/TVBoxOSC.jks TVBoxOSC/app/TVBoxOSC.jks
+cp -f diyTVBOX/TVBox/TVBoxOSC.jks TVBoxOSC/app/TVBoxOSC.jks
 sed -i '$a\RELEASE_STORE_FILE=./TVBoxOSC.jks'     TVBoxOSC/gradle.properties
 sed -i '$a\RELEASE_KEY_ALIAS=TVBoxOSC'            TVBoxOSC/gradle.properties
 sed -i '$a\RELEASE_STORE_PASSWORD=TVBoxOSC'       TVBoxOSC/gradle.properties
