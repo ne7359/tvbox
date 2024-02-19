@@ -68,7 +68,6 @@ jobs:
           distribution: temurin
           java-version: ${{ env.setup_java_ver }}
       - uses: gradle/gradle-build-action@v2
-        if: ${{ env.commit }}
 
       - name: 使用 Gradle 构建
         run: |
