@@ -29,7 +29,7 @@ echo '软件名称修改'
 sed -i 's/TVBox/QTM影视/g' TVBoxOSC/app/src/main/res/values-zh/strings.xml
 sed -i 's/TVBox/QTM影视/g' TVBoxOSC/app/src/main/res/values/strings.xml
 echo '添加内置播放源地址'
-sed -i 's#"app_source"><#"app_source">https://f.cyao.tk/n.json<#g' TVBoxOSC/app/src/main/res/values-zh/strings.xml
+sed -i 's#"app_source"><#"app_source">https://cyao.eu.org/files/n.json<#g' TVBoxOSC/app/src/main/res/values-zh/strings.xml
 
 #图标修改
 mv TVBox/img/d/app_icon.png TVBoxOSC/app/src/main/res/drawable/app_icon.png
