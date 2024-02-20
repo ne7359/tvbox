@@ -22,7 +22,7 @@ sed -i "/android:text=/s#=\"#=\"版本号：${diy_TIME}\\\\n\\\\n#" TVBoxOSC/app
 echo '修改请勿商用以及播放违法内容'
 sed -i 's/开源测试软件,请勿商用以及播放违法内容/请勿商用以及播放违法内容/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/LivePlayActivity.java
 echo '添加内置播放源地址'
-sed -i 's|API_URL, ""|API_URL, "https://f.cyao.tk/n.json"|g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/api/ApiConfig.java
+sed -i 's|API_URL, ""|API_URL, "https://cyao.eu.org/files/n.json"|g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/api/ApiConfig.java
 echo '修改界面首页为主页'
 sed -i 's/请选择首页数据源/请选择主页数据源/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/HomeActivity.java
 sed -i 's/自定义jar加载成功/数据加载成功/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/HomeActivity.java
