@@ -42,7 +42,7 @@ mv TVBox/img/app_banner.png TVBoxOSC/app/src/main/res/drawable/app_banner.png
 cp TVBox/Txmljava/fragment_user.xml TVBoxOSC/app/src/main/res/layout/fragment_user.xml
 
 # 整体布局修改
-cp TVBox/Txmljava/BaseActivity.java $CURRENT_DIR/$DIR/app/src/main/java/com/github/tvbox/osc/base/BaseActivity.java 
+cp TVBox/Txmljava/BaseActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/base/BaseActivity.java 
 
 # 主页增加每日一言/去除部分图标
 #cp TVBox/Txmljava/ApiConfig.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/api/ApiConfig.java
