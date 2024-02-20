@@ -12,45 +12,31 @@ sed -i "/jitpack.io/a\        maven { url 'https://o0halflife0o.github.io/crossw
 fi
 
 echo '更改软件包名使共存'
-sed -i 's/com.github.tvbox.osc/com.github.tvbox.osc.qtm/g' TVBoxOSC/app/build.gradle
+sed -i 's/com.github.tvbox.osc.tk/com.github.tvbox.osc.qtm/g' TVBoxOSC/app/build.gradle
 
-echo '关于更改'
+echo '修改-关于'
 sed -i '/android:text=/d' TVBoxOSC/app/src/main/res/layout/dialog_about.xml
-sed -i '/ingMultiplier=/a\        android:text="        本软件只提供聚合展示功能，所有资源来自网上, 软件不参与任何制作, 上传, 储存, 下载等内容. 软件仅供学习参考, 请于安装后24小时内删除。\\n\\n\\n                                                                    QTM 编译"' TVBoxOSC/app/src/main/res/layout/dialog_about.xml
+sed -i '/shadowRadius=/a\        android:text="        本软件只提供聚合展示功能，所有资源来自网上, 软件不参与任何制作, 上传, 储存, 下载等内容. 软件仅供学习参考, 请于安装后24小时内删除。\\n\\n\\n                                                                    QTM 编译"' TVBoxOSC/app/src/main/res/layout/dialog_about.xml
 
 echo '关于插入版本号'
 sed -i "/versionName/s#[0-9a-zA-Z_\.\'\"-]\+\$#\'版本号：${diy_TIME}\'#" TVBoxOSC/app/build.gradle
 sed -i "/android:text=/s#=\"#=\"版本号：${diy_TIME}\\\\n\\\\n#" TVBoxOSC/app/src/main/res/layout/dialog_about.xml 
 
-echo '修改请勿商用以及播放违法内容'
-sed -i 's/开源测试软件,请勿商用以及播放违法内容/请勿商用以及播放违法内容/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/LivePlayActivity.java
-
-echo '添加内置播放源地址'
-sed -i 's|API_URL, ""|API_URL, "https://f.cyao.tk/n.json"|g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/api/ApiConfig.java
-
-echo '修改界面首页为主页'
-sed -i 's/请选择首页数据源/请选择主页数据源/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/HomeActivity.java
-sed -i 's/自定义jar加载成功/数据加载成功/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/HomeActivity.java
-sed -i 's/jar加载失败/数据加载失败/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/HomeActivity.java
-
-echo '修改数据源列表，超过10个源起用三列排列'
-sed -i 's/Math.floor(sites.size()\/60/Math.floor(sites.size()\/10/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/HomeActivity.java
-
 echo '修改远程管理首页名'
 sed -i 's/TVBox/QTM影视/g' TVBoxOSC/app/src/main/res/raw/index.html
 
 echo '软件名称修改'
-#名称修改
 sed -i 's/TVBox/QTM影视/g' TVBoxOSC/app/src/main/res/values-zh/strings.xml
 sed -i 's/TVBox/QTM影视/g' TVBoxOSC/app/src/main/res/values/strings.xml
-sed -i 's#"app_source"><#"app_source">https://gh-proxy.com/https://raw.githubusercontent.com/zhoujck/config/master/box<#g' TVBoxOSC/app/src/main/res/values-zh/strings.xml  # 添加内置播放源地址
+echo '添加内置播放源地址'
+sed -i 's#"app_source"><#"app_source">https://f.cyao.tk/n.json<#g' TVBoxOSC/app/src/main/res/values-zh/strings.xml
 
 #图标修改
 mv TVBox/img/d/app_icon.png TVBoxOSC/app/src/main/res/drawable/app_icon.png
-sed -i 's/app_banner/app_icon/g' TVBoxOSC/app/src/main/AndroidManifest.xml
+mv TVBox/img/app_banner.png TVBoxOSC/app/src/main/res/drawable/app_banner.png
 
 #背景修改
-mv TVBox/img/bg/app_bg.png TVBoxOSC/app/src/main/res/drawable/app_bg.png
+# mv TVBox/img/bg/app_bg.png TVBoxOSC/app/src/main/res/drawable/app_bg.png
 
 # 主页UI调整 恢复老版；默认多行显示
 cp TVBox/Txmljava/fragment_user.xml TVBoxOSC/app/src/main/res/layout/fragment_user.xml
@@ -89,7 +75,6 @@ signingConfigs="$(echo "$signingConfigs" |base64 -d )"
 signingConfig="$(echo "$signingConfig" |base64 -d )"
 sed -i -e "/defaultConfig {/i\\$signingConfigs " -e "/debug {/a\\$signingConfig " -e "/release {/a\\$signingConfig " TVBoxOSC/app/build.gradle
 cp -f TVBox/TVBoxOSC.jks TVBoxOSC/app/TVBoxOSC.jks
-cp -f TVBox/TVBoxOSC.jks TVBoxOSC/TVBoxOSC.jks
 sed -i '$a\RELEASE_STORE_FILE=./TVBoxOSC.jks'     TVBoxOSC/gradle.properties
 sed -i '$a\RELEASE_KEY_ALIAS=TVBoxOSC'            TVBoxOSC/gradle.properties
 sed -i '$a\RELEASE_STORE_PASSWORD=TVBoxOSC'       TVBoxOSC/gradle.properties
