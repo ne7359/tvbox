@@ -38,7 +38,11 @@ jobs:
           cd diyTVBOX
           chmod +x TVBox/${{ inputs.source_branch }}/diy.sh
           source TVBox/${{ inputs.source_branch }}/diy.sh
-          source ./config.sh
+          if [ -f "./TVBoxOSC/app/build.gradle" ]; then
+            (
+              source ./config.sh
+            )
+          fi 
           cd
 
       - name: 测试选项
