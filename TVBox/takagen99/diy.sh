@@ -62,7 +62,7 @@ cp TVBox/Txmljava/BaseActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/
 #cp TVBox/Txmljava/SearchActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/SearchActivity.java
 
 #长按倍速修改为2
-sed -i 's/3.0/2.0/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/player/controller/VodController.java
+#sed -i 's/3.0/2.0/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/player/controller/VodController.java
 
 #FongMi的jar支持
 echo "" >> TVBoxOSC/app/proguard-rules.pro
