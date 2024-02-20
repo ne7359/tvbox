@@ -31,6 +31,7 @@ jobs:
       - name: 获取 DIY 配置
         run: |
           git clone https://github.com/ne7359/tvbox.git diyTVBOX
+          echo "BUILD_TIME=${HOUR}时${MIN}分${SEC}秒" >> $GITHUB_ENV
 
       - name: DIY 源代码
         run: |
@@ -107,6 +108,9 @@ jobs:
           removeArtifacts: true
           body: |
             编译源码：${{ inputs.source_branch }}
+            
             🎈 编译时间：${{ env.FILE_TIME }}
+            
+            编译用时: ${{ env.BUILD_TIME }}
           artifacts: |
             diyTVBOX/TVBoxOSC/apk/*.apk
