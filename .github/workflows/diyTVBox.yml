@@ -101,12 +101,6 @@ jobs:
           for file in `find ~ -name "*release*.apk" -print`; do
             mv "$file" apk/QTM影视.apk
           done
-          echo "编译完成时间..."
-          START_SECONDS=${{ env.START_SECONDS }}
-          END_TIME=`date +'%Y-%m-%d %H:%M:%S'`
-          END_SECONDS=$(date --date="$END_TIME" +%s)
-          SECONDS=$((END_SECONDS-START_SECONDS))
-          HOUR=$(( $SECONDS/3600 )) && MIN=$(( ($SECONDS-${HOUR}*3600)/60 )) && SEC=$(( $SECONDS-${HOUR}*3600-${MIN}*60 ))
 
       - name: 上传 APK 到 Release
         uses: ncipollo/release-action@main
@@ -121,8 +115,6 @@ jobs:
             ★ 源码分支：${{ inputs.source_branch }}
             
             🎈 编译时间：${{ env.FILE_TIME }}
-            
-            ⏰ 编译用时：${{ env.BUILD_TIME }}
 
           artifacts: |
             diyTVBOX/TVBoxOSC/apk/*.apk
