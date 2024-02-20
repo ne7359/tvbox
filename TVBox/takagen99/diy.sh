@@ -46,31 +46,34 @@ sed -i 's/TVBox/QTM影视/g' TVBoxOSC/app/src/main/res/values/strings.xml
 sed -i 's#"app_source"><#"app_source">https://gh-proxy.com/https://raw.githubusercontent.com/zhoujck/config/master/box<#g' TVBoxOSC/app/src/main/res/values-zh/strings.xml  # 添加内置播放源地址
 
 #图标修改
-mv $CURRENT_DIR/DIY/app_icon.png TVBoxOSC/app/src/main/res/drawable/app_icon.png
+mv TVBox/img/d/app_icon.png TVBoxOSC/app/src/main/res/drawable/app_icon.png
 sed -i 's/app_banner/app_icon/g' TVBoxOSC/app/src/main/AndroidManifest.xml
 
 #背景修改
-#mv $CURRENT_DIR/DIY/app_bg_black.png TVBoxOSC/app/src/main/res/drawable/app_bg.png
+mv TVBox/img/bg/app_bg.png TVBoxOSC/app/src/main/res/drawable/app_bg.png
 
 # 主页UI调整 恢复老版；默认多行显示
-cp $CURRENT_DIR/DIY/T/fragment_user.xml TVBoxOSC/app/src/main/res/layout/fragment_user.xml
+cp TVBox/Txmljava/fragment_user.xml TVBoxOSC/app/src/main/res/layout/fragment_user.xml
+
+# 整体布局修改
+cp TVBox/Txmljava/BaseActivity.java $CURRENT_DIR/$DIR/app/src/main/java/com/github/tvbox/osc/base/BaseActivity.java 
 
 # 主页增加每日一言/去除部分图标
-#cp $CURRENT_DIR/DIY/T/ApiConfig.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/api/ApiConfig.java
-#cp $CURRENT_DIR/DIY/T/activity_home.xml TVBoxOSC/app/src/main/res/layout/activity_home.xml
-#cp $CURRENT_DIR/DIY/T/HomeActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/HomeActivity.java
+#cp TVBox/Txmljava/ApiConfig.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/api/ApiConfig.java
+#cp TVBox/Txmljava/activity_home.xml TVBoxOSC/app/src/main/res/layout/activity_home.xml
+#cp TVBox/Txmljava/HomeActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/HomeActivity.java
 
 # 默认设置修改
-#cp $CURRENT_DIR/DIY/T/App.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/base/App.java 
+#cp TVBox/Txmljava/App.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/base/App.java 
 
 # 取消首页从通知栏位置布置
-#cp $CURRENT_DIR/DIY/T/BaseActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/base/BaseActivity.java 
+#cp TVBox/Txmljava/BaseActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/base/BaseActivity.java 
 
 # 直播添加epg112114支持
-#cp $CURRENT_DIR/DIY/T/LivePlayActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/LivePlayActivity.java
+#cp TVBox/Txmljava/LivePlayActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/LivePlayActivity.java
 
 # 搜索改为爱奇艺热词，支持首字母联想
-#cp $CURRENT_DIR/DIY/T/SearchActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/SearchActivity.java
+#cp TVBox/Txmljava/SearchActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/SearchActivity.java
 
 #长按倍速修改为2
 sed -i 's/3.0/2.0/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/player/controller/VodController.java
