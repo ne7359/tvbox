@@ -1,5 +1,5 @@
 #!/bin/bash
-git clone -b main --depth=1 https://github.com/q215613905/TVBoxOS TVBoxOSC
+git clone -b main --depth=1 https://github.com/takagen99/Box TVBoxOSC
 chmod +x ./TVBoxOSC
 diy_TIME=$(date "+%Y.%m.%d")
 cat << 'EOF' > ./config.sh
@@ -78,4 +78,4 @@ sed -i '$a\RELEASE_KEY_PASSWORD=TVBoxOSC'         TVBoxOSC/gradle.properties
 echo 'DIY 完成'
 EOF
 chmod +x ./config.sh
-echo "javaVersion=8" >> $GITHUB_ENV
+echo "javaVersion=17" >> $GITHUB_ENV
