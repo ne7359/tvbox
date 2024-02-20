@@ -2,7 +2,6 @@
 git clone -b main --depth=1 https://github.com/takagen99/Box TVBoxOSC
 chmod +x ./TVBoxOSC
 diy_TIME=$(date "+%Y.%m.%d")
-echo "${diy_TIME}" >> $GITHUB_ENV
 cat << 'EOF' > ./config.sh
 #!/bin/bash
 echo 'crosswalk源，防挂'
