@@ -111,10 +111,11 @@ jobs:
           allowUpdates: true
           removeArtifacts: true
           body: |
-            编译源码：${{ inputs.source_branch }}
+            ★ 源码分支：${{ inputs.source_branch }}
             
             🎈 编译时间：${{ env.FILE_TIME }}
             
-            编译用时: ${{ env.BUILD_TIME }}
+            ⏰ 编译用时：${{ env.BUILD_TIME }}
+
           artifacts: |
             diyTVBOX/TVBoxOSC/apk/*.apk
