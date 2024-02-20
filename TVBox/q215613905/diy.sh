@@ -78,4 +78,4 @@ sed -i '$a\RELEASE_KEY_PASSWORD=TVBoxOSC'         TVBoxOSC/gradle.properties
 echo 'DIY 完成'
 EOF
 chmod +x ./config.sh
-echo "javaVersion=8" >> $GITHUB_ENV
+# echo "javaVersion=8" >> $GITHUB_ENV
