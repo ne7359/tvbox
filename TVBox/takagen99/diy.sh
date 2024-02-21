@@ -38,7 +38,7 @@ echo '添加内置播放源地址'
 sed -i 's#"app_source"><#"app_source">https://cyao.eu.org/files/n.json<#g' TVBoxOSC/app/src/main/res/values-zh/strings.xml
 
 #图标修改
-mv TVBox/img/d/app_icon.png TVBoxOSC/app/src/main/res/drawable/app_icon.png
+mv TVBox/img/04/app_icon.png TVBoxOSC/app/src/main/res/drawable/app_icon.png
 mv TVBox/img/app_banner.png TVBoxOSC/app/src/main/res/drawable/app_banner.png
 
 #背景修改
@@ -89,3 +89,4 @@ echo 'DIY 完成'
 EOF
 chmod +x ./config.sh
 # echo "javaVersion=17" >> $GITHUB_ENV
+echo "source=T" >> $GITHUB_ENV
