@@ -16,7 +16,7 @@ fi
 
 echo '版本降低至16 安卓4.4'
 sed -i '/minSdkVersion/d' TVBoxOSC/app/build.gradle
-sed -i '/com.github.tvbox.osc.tk/a\        minSdkVersion 17' TVBoxOSC/app/build.gradle
+sed -i '/com.github.tvbox.osc.tk/a\        minSdkVersion 18' TVBoxOSC/app/build.gradle
 sed -i '/targetSdkVersion/d' TVBoxOSC/app/build.gradle
 sed -i '/minSdkVersion/a\        targetSdkVersion 26' TVBoxOSC/app/build.gradle
 
