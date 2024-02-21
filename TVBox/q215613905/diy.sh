@@ -34,10 +34,10 @@ sed -i 's/TVBox/QTM影视/g' TVBoxOSC/app/src/main/res/raw/index.html
 echo '软件名称修改'
 sed -i 's/TVBox/QTM影视/g' TVBoxOSC/app/src/main/res/values/strings.xml
 echo '图标修改'
-mv TVBox/img/a/app_icon.png TVBoxOSC/app/src/main/res/drawable-hdpi/app_icon.png
-mv TVBox/img/b/app_icon.png TVBoxOSC/app/src/main/res/drawable-xhdpi/app_icon.png
-mv TVBox/img/c/app_icon.png TVBoxOSC/app/src/main/res/drawable-xxhdpi/app_icon.png
-mv TVBox/img/d/app_icon.png TVBoxOSC/app/src/main/res/drawable-xxxhdpi/app_icon.png
+mv TVBox/img/01/app_icon.png TVBoxOSC/app/src/main/res/drawable-hdpi/app_icon.png
+mv TVBox/img/02/app_icon.png TVBoxOSC/app/src/main/res/drawable-xhdpi/app_icon.png
+mv TVBox/img/03/app_icon.png TVBoxOSC/app/src/main/res/drawable-xxhdpi/app_icon.png
+mv TVBox/img/04/app_icon.png TVBoxOSC/app/src/main/res/drawable-xxxhdpi/app_icon.png
 echo '背景修改'
 mv TVBox/img/bg/app_bg.png TVBoxOSC/app/src/main/res/drawable/app_bg.png
 
@@ -79,3 +79,4 @@ echo 'DIY 完成'
 EOF
 chmod +x ./config.sh
 # echo "javaVersion=8" >> $GITHUB_ENV
+echo "source=Q" >> $GITHUB_ENV
