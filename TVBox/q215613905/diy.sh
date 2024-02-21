@@ -61,8 +61,8 @@ sed -i 's/color_353744/color_1890FF/g' TVBoxOSC/app/src/main/res/drawable/shape_
 # sed -i 's/3.0/2.0/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/player/controller/VodController.java
 
 #FongMi的jar支持
-echo "" >> TVBoxOSC/app/proguard-rules.pro
-echo "-keep class com.google.gson.**{*;}" >> TVBoxOSC/app/proguard-rules.pro
+# echo "" >> TVBoxOSC/app/proguard-rules.pro
+# echo "-keep class com.google.gson.**{*;}" >> TVBoxOSC/app/proguard-rules.pro
 
 echo '签名'
 signingConfigs='ICAgIHNpZ25pbmdDb25maWdzIHtcCiAgICAgICAgaWYgKHByb2plY3QuaGFzUHJvcGVydHkoIlJFTEVBU0VfU1RPUkVfRklMRSIpKSB7XAogICAgICAgICAgICBteUNvbmZpZyB7XAogICAgICAgICAgICAgICAgc3RvcmVGaWxlIGZpbGUoUkVMRUFTRV9TVE9SRV9GSUxFKVwKICAgICAgICAgICAgICAgIHN0b3JlUGFzc3dvcmQgUkVMRUFTRV9TVE9SRV9QQVNTV09SRFwKICAgICAgICAgICAgICAgIGtleUFsaWFzIFJFTEVBU0VfS0VZX0FMSUFTXAogICAgICAgICAgICAgICAga2V5UGFzc3dvcmQgUkVMRUFTRV9LRVlfUEFTU1dPUkRcCiAgICAgICAgICAgICAgICB2MVNpZ25pbmdFbmFibGVkIHRydWVcCiAgICAgICAgICAgICAgICB2MlNpZ25pbmdFbmFibGVkIHRydWVcCiAgICAgICAgICAgICAgICBlbmFibGVWM1NpZ25pbmcgPSB0cnVlXAogICAgICAgICAgICAgICAgZW5hYmxlVjRTaWduaW5nID0gdHJ1ZVwKICAgICAgICAgICAgfVwKICAgICAgICB9XAogICAgfVwKXA=='
