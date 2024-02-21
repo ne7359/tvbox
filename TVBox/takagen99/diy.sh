@@ -14,6 +14,10 @@ fi
 #echo '更改软件包名使共存'
 #sed -i 's/com.github.tvbox.osc.tk/com.github.tvbox.osc.qtm/g' TVBoxOSC/app/build.gradle
 
+echo '版本降低至19 安卓4.4
+sed -i '/minSdkVersion/d' TVBoxOSC/app/build.gradle
+sed -i '/com.github.tvbox.osc.tk/a\        minSdkVersion 17' TVBoxOSC/app/build.gradle
+
 echo '修改-关于'
 sed -i '/android:text=/d' TVBoxOSC/app/src/main/res/layout/dialog_about.xml
 sed -i '/shadowRadius=/a\        android:text="        本软件只提供聚合展示功能，所有资源来自网上, 软件不参与任何制作, 上传, 储存, 下载等内容. 软件仅供学习参考, 请于安装后24小时内删除。\\n\\n\\n                                                                    QTM 编译"' TVBoxOSC/app/src/main/res/layout/dialog_about.xml
