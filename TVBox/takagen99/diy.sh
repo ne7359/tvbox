@@ -14,9 +14,9 @@ fi
 #echo '更改软件包名使共存'
 #sed -i 's/com.github.tvbox.osc.tk/com.github.tvbox.osc.qtm/g' TVBoxOSC/app/build.gradle
 
-echo '版本降低至19 安卓4.4
+echo '版本降低至16 安卓4.4
 sed -i '/minSdkVersion/d' TVBoxOSC/app/build.gradle
-sed -i '/com.github.tvbox.osc.tk/a\        minSdkVersion 17' TVBoxOSC/app/build.gradle
+sed -i '/com.github.tvbox.osc.tk/a\        minSdkVersion 16' TVBoxOSC/app/build.gradle
 sed -i '/targetSdkVersion/d' TVBoxOSC/app/build.gradle
 sed -i '/minSdkVersion/a\        targetSdkVersion 26' TVBoxOSC/app/build.gradle
 
