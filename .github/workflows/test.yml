@@ -18,14 +18,11 @@ on:
       source_branch:
         description: "选择TVBox源分支"
         required: false
-        default: "俊版"
+        default: "q215613905"
         type: choice
         options:
           - q215613905
-          - 俊版
           - takagen99
-env: 
-  俊版: ${{ inputs.source_branch }}
 
 jobs:
   build:
