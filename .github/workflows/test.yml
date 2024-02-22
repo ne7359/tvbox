@@ -1,4 +1,4 @@
-name: 编译DIYTVBox
+name: 编译DiyTVBox
 
 on:
   workflow_dispatch:
