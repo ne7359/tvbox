@@ -115,7 +115,7 @@ jobs:
       - name: 准备应用程序
         working-directory: TVBoxOSC
         run: |
-          export LANG="zh_CN.UTF-8
+          export LESSCHARSET=utf-8
           rm -rf apk/
           mkdir -p apk/
           for file in `find ~ -name "*release*.apk" -print`; do
