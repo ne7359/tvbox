@@ -55,7 +55,7 @@ jobs:
           # echo "tag=$(date "+%Y年%m月%d日-%H点%M分")" >> $GITHUB_ENV   # 添加编译时间
           echo '生成日期完成'
 
-      - name: 压缩并修改的源代码
+      - name: 压缩 修改后的源代码
         working-directory: TVBoxOSC
         run: |
           tar -cJf source-${{ env.tag }}.tar.xz --exclude=.git --exclude=.github *
