@@ -1,5 +1,6 @@
 #!/bin/bash
-git clone -b main --depth=1 https://github.com/q215613905/TVBoxOS TVBoxOSC
+# git clone -b main --depth=1 https://github.com/q215613905/TVBoxOS TVBoxOSC
+echo "sourceURL=https://github.com/q215613905/TVBoxOS" >> $GITHUB_ENV
 chmod +x ./TVBoxOSC
 diy_TIME=$(date "+%Y.%m.%d")
 cat << 'EOF' > ./config.sh
