@@ -40,7 +40,7 @@ jobs:
       - name: Clone project
         working-directory: ${{ github.workspace }}
         run: |
-          git clone -b main --depth=1 ${{ env.sourceURL }}.git 
+          git clone -b main --depth=1 ${{ env.sourceURL }} TVBoxOSC
           if [ -f "./TVBoxOSC/app/build.gradle" ]; then
             (
               source ./config.sh
@@ -48,7 +48,8 @@ jobs:
           fi 
           echo "tag=$(git log --date=format:'%Y.%m.%d-%H.%M' -1 --pretty=format:%cd)" >> $GITHUB_ENV
           echo '生成日期完成'
-       - name: Clone project
+          echo "WPD=${{ WPD }}" >> $GITHUB_ENV
+      - name: Clone project
         working-directory: ${{ github.workspace }}
         run: |
           echo '完成'
