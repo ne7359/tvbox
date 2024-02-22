@@ -59,6 +59,7 @@ jobs:
         working-directory: TVBoxOSC
         run: |
           tar -cJf source-${{ env.tag }}.tar.xz --exclude=.git --exclude=.github *
+          cd
 
       - name: 添加 arm64-v8a 支持
         if: ${{ inputs.android_arm64 }}
