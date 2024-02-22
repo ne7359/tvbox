@@ -113,4 +113,25 @@ sed -i '/public Object\[\] proxyLoca/a\    try {\n        if(param.containsKey(\
 echo '添加PY支持完成'
 EOF
 chmod +x ./add-py.sh
-# echo "javaVersion=8" >> $GITHUB_ENV
+
+#添加arm64-v8a
+touch ./arm64-v8a.sh
+cat << 'EOF' > ./arm64-v8a.sh
+#!/bin/bash
+sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" TVBoxOSC/app/build.gradle
+sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" TVBoxOSC/player/build.gradle
+echo '添加arm64-v8a完成'
+EOF
+chmod +x ./arm64-v8a.sh
+
+#添加add-X86
+touch ./add-X86.sh
+cat << 'EOF' > ./add-X86.sh
+#!/bin/bash
+sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'x86', 'x86_64'#" TVBoxOSC/app/build.gradle
+sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'x86', 'x86_64'#" TVBoxOSC/player/build.gradle
+echo '添加add-X86完成'
+EOF
+chmod +x ./add-X86.sh
+
+# echo "javaVersion=17" >> $GITHUB_ENV
