@@ -80,6 +80,15 @@ cp TVBox/Txmljava/BaseActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/
 #长按倍速修改为2
 #sed -i 's/3.0/2.0/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/player/controller/VodController.java
 
+#添加详情页播放列表宽度自适
+#sed -i '/import me.jessyan.autosize.utils.AutoSizeUtils;/a\import android.graphics.Rect;\nimport android.graphics.Paint;\nimport android.text.TextPaint;\nimport androidx.annotation.NonNull;\nimport android.graphics.Typeface;\nimport androidx.recyclerview.widget.RecyclerView;' $CURRENT_DIR/$DIR/app/src/main/java/com/github/tvbox/osc/ui/activity/DetailActivity.java
+#sed -i '/private View seriesFlagFocus = null;/a\    private V7GridLayoutManager mGridViewLayoutMgr = null;' $CURRENT_DIR/$DIR/app/src/main/java/com/github/tvbox/osc/ui/activity/DetailActivity.java
+#sed -i 's/mGridView.setLayoutManager(new V7GridLayoutManager(this.mContext, isBaseOnWidth() ? 6 : 7));/mGridView.setHasFixedSize(false);\n        this.mGridViewLayoutMgr = new V7GridLayoutManager(this.mContext, isBaseOnWidth() ? 6 : 7);\n        mGridView.setLayoutManager(this.mGridViewLayoutMgr);\n/g' $CURRENT_DIR/$DIR/app/src/main/java/com/github/tvbox/osc/ui/activity/DetailActivity.java
+#sed -i '/seriesAdapter.setNewData(vodInfo.seriesMap.get(vodInfo.playFlag));/i\        Paint pFont = new Paint();\n        Rect rect = new Rect();\n        List<VodInfo.VodSeries> list = vodInfo.seriesMap.get(vodInfo.playFlag);\n        int w = 1;\n        for(int i =0; i < list.size(); ++i){\n            String name = list.get(i).name;\n            pFont.getTextBounds(name, 0, name.length(), rect);\n            if(w < rect.width()){\n                w = rect.width();\n            }\n        }\n        w += 32;\n        int screenWidth = getWindowManager().getDefaultDisplay().getWidth()\/3;\n        int offset = screenWidth\/w;\n        if(offset <=1) offset =1;\n        if(offset > 6) offset =6;\n        this.mGridViewLayoutMgr.setSpanCount(offset);\n' $CURRENT_DIR/$DIR/app/src/main/java/com/github/tvbox/osc/ui/activity/DetailActivity.java
+#sed -i 's/FrameLayout/LinearLayout/g' $CURRENT_DIR/$DIR/app/src/main/res/layout/item_series.xml
+#sed -i 's/width=\"wrap_content\"/width=\"match_parent\"/g' $CURRENT_DIR/$DIR/app/src/main/res/layout/item_series.xml
+#sed -i 's/@dimen\/vs_190/match_parent/g' $CURRENT_DIR/$DIR/app/src/main/res/layout/item_series.xml
+
 #FongMi的jar支持
 echo "" >> TVBoxOSC/app/proguard-rules.pro
 echo "-keep class com.google.gson.**{*;}" >> TVBoxOSC/app/proguard-rules.pro
@@ -130,4 +139,23 @@ sed -i '/public Object\[\] proxyLoca/a\    try {\n        if(param.containsKey(\
 echo '添加PY支持完成'
 EOF
 chmod +x ./add-py.sh
+
+#添加arm64-v8a
+touch ./arm64-v8a.sh
+cat << 'EOF' > ./arm64-v8a.sh
+#!/bin/bash
+sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" TVBoxOSC/app/build.gradle
+echo '添加arm64-v8a完成'
+EOF
+chmod +x ./arm64-v8a.sh
+
+#添加add-X86
+touch ./add-X86.sh
+cat << 'EOF' > ./add-X86.sh
+#!/bin/bash
+sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'x86', 'x86_64'#" TVBoxOSC/app/build.gradle
+echo '添加add-X86完成'
+EOF
+chmod +x ./add-X86.sh
+
 # echo "javaVersion=17" >> $GITHUB_ENV
