@@ -48,7 +48,7 @@ jobs:
           fi 
           echo "tag=$(git log --date=format:'%Y.%m.%d-%H.%M' -1 --pretty=format:%cd)" >> $GITHUB_ENV
           echo '生成日期完成'
-          echo "WPD=${{ WPD }}" >> $GITHUB_ENV
+          echo "PWD=$PWD" >> $GITHUB_ENV
       - name: Clone project
         working-directory: ${{ github.workspace }}
         run: |
