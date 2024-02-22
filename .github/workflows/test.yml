@@ -72,7 +72,7 @@ jobs:
         if: ${{ inputs.android_x86 }}
         working-directory: TVBoxOSC
         run: |
-          #添加arm64支持，不支持ijk解码
+          #添加arm64支持，不支持ijk解码 注：如果T版添加arm64支持，注释掉77行，因player/build.gradle文件夹
           sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" app/build.gradle
           sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" player/build.gradle
 
@@ -91,7 +91,7 @@ jobs:
       #  uses: actions/setup-java@v4
       #  with:
       #    distribution: temurin
-      #    java-version: ${{ env.javaVersion }}
+      #    java-version: ${{ env.javaVersion }} #用于自定义版本，修改diy.sh 变量javaVersion=版本号
       - name: 检查JAVA版本 安装JDK
         working-directory: TVBoxOSC
         run: |
