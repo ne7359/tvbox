@@ -48,7 +48,7 @@ jobs:
           chmod +x ./TVBoxOSC
           if [ -f "./TVBoxOSC/app/build.gradle" ]; then
             (
-              source ./config.sh
+              source ./custom.sh
             )
           fi 
           echo "tag=$(git log --date=format:'%Y.%m.%d-%H.%M' -1 --pretty=format:%cd)" >> $GITHUB_ENV
