@@ -62,24 +62,26 @@ jobs:
 
       - name: 添加 arm64-v8a 支持
         if: ${{ inputs.android_arm64 }}
-        working-directory: ${{ github.workspace }}
+        working-directory: TVBoxOSC
         run: |
-          chmod +x TVBox/${{ inputs.source_branch }}/add-arm64.sh
-          source TVBox/${{ inputs.source_branch }}/add-arm64.sh
+          #添加arm64支持，不支持ijk解码
+          sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" app/build.gradle
+          sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" player/build.gradle
 
       - name: 添加 x86 支持
         if: ${{ inputs.android_x86 }}
-        working-directory: ${{ github.workspace }}
+        working-directory: TVBoxOSC
         run: |
-          chmod +x TVBox/${{ inputs.source_branch }}/add-x86.sh
-          source TVBox/${{ inputs.source_branch }}/add-x86.sh
+          sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'x86', 'x86_64'#" app/build.gradle
+          sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'x86', 'x86_64'#" app/player/build.gradle
 
       - name: 添加 PY 支持
         if: ${{ inputs.add_py }}
         working-directory: ${{ github.workspace }}
         run: |
-          chmod +x TVBox/${{ inputs.source_branch }}/add-py.sh
-          source TVBox/${{ inputs.source_branch }}/add-py.sh
+          mv TVBox/${{ inputs.source_branch }}/add-py.sh ./add-py.sh
+          chmod +x ./add-py.sh
+          source ./add-py.sh
 
       #- name: Setup JDK
       #  uses: actions/setup-java@v4
