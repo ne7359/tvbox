@@ -62,19 +62,15 @@ jobs:
 
       - name: 添加 arm64-v8a 支持
         if: ${{ inputs.android_arm64 }}
-        working-directory: TVBoxOSC
+        working-directory: ${{ github.workspace }}
         run: |
-          #添加arm64支持，不支持ijk解码
-          sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" app/build.gradle
-          sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" player/build.gradle
+          source ./arm64-v8a.sh
 
       - name: 添加 x86 支持
         if: ${{ inputs.android_x86 }}
-        working-directory: TVBoxOSC
+        working-directory: ${{ github.workspace }}
         run: |
-          #添加arm64支持，不支持ijk解码 注：如果T版添加arm64支持，注释掉77行，因player/build.gradle文件夹
-          sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" app/build.gradle
-          sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" player/build.gradle
+          source ./add-X86.sh
 
       - name: 添加 PY 支持
         if: ${{ inputs.add_py }}
