@@ -58,27 +58,27 @@ mv TVBox/img/app_banner.png TVBoxOSC/app/src/main/res/drawable/app_banner.png
 # mv TVBox/img/bg/app_bg.png TVBoxOSC/app/src/main/res/drawable/app_bg.png
 
 # 主页UI调整 恢复老版；默认多行显示
-cp TVBox/Txmljava/fragment_user.xml TVBoxOSC/app/src/main/res/layout/fragment_user.xml
+cp TVBox/takagen99/xmljava/fragment_user.xml TVBoxOSC/app/src/main/res/layout/fragment_user.xml
 
 # 整体布局修改
-cp TVBox/Txmljava/BaseActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/base/BaseActivity.java 
+cp TVBox/takagen99/xmljava/BaseActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/base/BaseActivity.java 
 
 # 主页增加每日一言/去除部分图标
-#cp TVBox/Txmljava/ApiConfig.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/api/ApiConfig.java
-#cp TVBox/Txmljava/activity_home.xml TVBoxOSC/app/src/main/res/layout/activity_home.xml
-#cp TVBox/Txmljava/HomeActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/HomeActivity.java
+#cp TVBox/takagen99/xmljava/ApiConfig.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/api/ApiConfig.java
+#cp TVBox/takagen99/xmljava/activity_home.xml TVBoxOSC/app/src/main/res/layout/activity_home.xml
+#cp TVBox/takagen99/xmljava/HomeActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/HomeActivity.java
 
 # 默认设置修改
-#cp TVBox/Txmljava/App.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/base/App.java 
+#cp TVBox/takagen99/xmljava/App.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/base/App.java 
 
 # 取消首页从通知栏位置布置
-#cp TVBox/Txmljava/BaseActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/base/BaseActivity.java 
+#cp TVBox/takagen99/xmljava/BaseActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/base/BaseActivity.java 
 
 # 直播添加epg112114支持
-#cp TVBox/Txmljava/LivePlayActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/LivePlayActivity.java
+#cp TVBox/takagen99/xmljava/LivePlayActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/LivePlayActivity.java
 
 # 搜索改为爱奇艺热词，支持首字母联想
-#cp TVBox/Txmljava/SearchActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/SearchActivity.java
+#cp TVBox/takagen99/xmljava/SearchActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/SearchActivity.java
 
 #长按倍速修改为2
 #sed -i 's/3.0/2.0/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/player/controller/VodController.java
