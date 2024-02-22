@@ -4,8 +4,8 @@ echo "sourceURL=https://github.com/takagen99/Box" >> $GITHUB_ENV
 echo "sourceName=T" >> $GITHUB_ENV
 
 diy_TIME=$(date "+%Y.%m.%d")
-touch ./config.sh
-cat << 'EOF' > ./config.sh
+touch ./custom.sh
+cat << 'EOF' > ./custom.sh
 #!/bin/bash
 echo 'crosswalk源，防挂'
 if grep -q 'crosswalk' TVBoxOSC/build.gradle; then
@@ -93,7 +93,7 @@ cp TVBox/Txmljava/BaseActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/
 echo "" >> TVBoxOSC/app/proguard-rules.pro
 echo "-keep class com.google.gson.**{*;}" >> TVBoxOSC/app/proguard-rules.pro
 EOF
-chmod +x ./config.sh
+chmod +x ./custom.sh
 
 touch ./ApkSign.sh
 cat << 'EOF' > ./ApkSign.sh
