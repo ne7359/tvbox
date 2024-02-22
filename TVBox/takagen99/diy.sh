@@ -1,7 +1,8 @@
 #!/bin/bash
-# git clone -b main --depth=1 https://github.com/takagen99/Box TVBoxOSC
+
 echo "sourceURL=https://github.com/takagen99/Box" >> $GITHUB_ENV
-# chmod +x ./TVBoxOSC
+echo "sourceName=T" >> $GITHUB_ENV
+
 diy_TIME=$(date "+%Y.%m.%d")
 touch ./config.sh
 cat << 'EOF' > ./config.sh
@@ -98,4 +99,3 @@ echo 'DIY 完成'
 EOF
 chmod +x ./config.sh
 # echo "javaVersion=17" >> $GITHUB_ENV
-echo "source=T" >> $GITHUB_ENV
