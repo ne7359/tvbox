@@ -115,11 +115,10 @@ jobs:
       - name: 准备应用程序
         working-directory: TVBoxOSC
         run: |
-          export LESSCHARSET=utf-8
           rm -rf apk/
           mkdir -p apk/
           for file in `find ~ -name "*release*.apk" -print`; do
-            mv "$file" apk/QTM影视-${{ env.sourceName }}.apk
+            mv "$file" apk/QTM-${{ env.sourceName }}.apk
           done
 
       - name: 上传 APK 到 Release
