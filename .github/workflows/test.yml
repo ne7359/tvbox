@@ -54,6 +54,11 @@ jobs:
           echo "tag=$(git log --date=format:'%Y.%m.%d-%H.%M' -1 --pretty=format:%cd)" >> $GITHUB_ENV
           echo '生成日期完成'
 
+      - name: 压缩并修改的源代码
+        working-directory: TVBoxOSC
+        run: |
+          tar -cJf source-${{ env.tag }}.tar.xz --exclude=.git --exclude=.github *
+
       - name: 添加 arm64-v8a 支持
         if: ${{ inputs.android_arm64 }}
         working-directory: ${{ github.workspace }}
@@ -74,11 +79,6 @@ jobs:
         run: |
           chmod +x TVBox/${{ inputs.source_branch }}/Add-PY.sh
           source TVBox/${{ inputs.source_branch }}/Add-PY.sh
-
-      - name: 压缩源代码
-        working-directory: TVBoxOSC
-        run: |
-          tar -cJf source-${{ env.tag }}.tar.xz --exclude=.git --exclude=.github *
 
       #- name: Setup JDK
       #  uses: actions/setup-java@v4
@@ -113,7 +113,7 @@ jobs:
           rm -rf apk/
           mkdir -p apk/
           for file in `find ~ -name "*release*.apk" -print`; do
-            mv "$file" apk/QTM影视-${{ env.source }}.apk
+            mv "$file" apk/QTM影视-${{ env.sourceName }}.apk
           done
 
       - name: 上传 APK 到 Release
@@ -132,3 +132,4 @@ jobs:
 
           artifacts: |
             TVBoxOSC/apk/*.apk
+            TVBoxOSC/source-${{ env.tag }}.*
