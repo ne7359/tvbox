@@ -41,8 +41,8 @@ jobs:
       - name: 设置 DIY
         working-directory: ${{ github.workspace }}
         run: |
-         chmod +x TVBox/${{ 俊版 }}/diy.sh
-         source TVBox/${{ 俊版 }}/diy.sh
+         chmod +x TVBox/${{ inputs.source_branch }}/diy.sh
+         source TVBox/${{ inputs.source_branch }}/diy.sh
 
       - name: 拉取源并修改源代码
         working-directory: ${{ github.workspace }}
