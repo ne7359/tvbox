@@ -45,6 +45,7 @@ jobs:
         working-directory: ${{ github.workspace }}
         run: |
           git clone -b main --depth=1 ${{ env.sourceURL }} TVBoxOSC
+          chmod +x ./TVBoxOSC
           if [ -f "./TVBoxOSC/app/build.gradle" ]; then
             (
               source ./config.sh
