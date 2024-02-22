@@ -4,7 +4,6 @@ echo "sourceURL=https://github.com/q215613905/TVBoxOS" >> $GITHUB_ENV
 echo "sourceName=Q" >> $GITHUB_ENV
 
 diy_TIME=$(date "+%Y.%m.%d")
-
 touch ./config.sh
 cat << 'EOF' > ./config.sh
 #!/bin/bash
