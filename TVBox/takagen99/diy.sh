@@ -109,7 +109,6 @@ sed -i "/thunder.jar/a\    implementation files('libs@pyramid.aar')" TVBoxOSC/ap
 sed -i 's#@#\\#g' TVBoxOSC/app/build.gradle
 sed -i 's#pyramid#\\pyramid#g' TVBoxOSC/app/build.gradle
 echo "" >> TVBoxOSC/app/proguard-rules.pro
-echo "" >> TVBoxOSC/app/proguard-rules.pro
 echo "#添加PY支持" >> TVBoxOSC/app/proguard-rules.pro
 echo "-keep public class com.undcover.freedom.pyramid.** { *; }" >> TVBoxOSC/app/proguard-rules.pro
 echo "-dontwarn com.undcover.freedom.pyramid.**" >> TVBoxOSC/app/proguard-rules.pro
