@@ -78,10 +78,12 @@ jobs:
       - name: 添加 PY 支持
         if: ${{ inputs.add_py }}
         working-directory: ${{ github.workspace }}
-        run: |
-          mv TVBox/${{ inputs.source_branch }}/add-py.sh ./add-py.sh
-          chmod +x ./add-py.sh
-          source ./add-py.sh
+        run: |         
+          if [ -f "./add-py.sh" ]; then
+            (
+              source ./add-py.sh
+            )
+          fi
 
       #- name: Setup JDK
       #  uses: actions/setup-java@v4
