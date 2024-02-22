@@ -23,6 +23,8 @@ on:
         options:
           - q215613905
           - takagen99
+env: 
+  俊版: ${{ inputs.source_branch }}
 
 jobs:
   build:
@@ -38,8 +40,8 @@ jobs:
       - name: 设置 DIY
         working-directory: ${{ github.workspace }}
         run: |
-         chmod +x TVBox/${{ inputs.source_branch }}/diy.sh
-         source TVBox/${{ inputs.source_branch }}/diy.sh
+         chmod +x TVBox/${{ 俊版 }}/diy.sh
+         source TVBox/${{ 俊版 }}/diy.sh
 
       - name: 拉取源并修改源代码
         working-directory: ${{ github.workspace }}
