@@ -1,8 +1,9 @@
 #!/bin/bash
 # git clone -b main --depth=1 https://github.com/q215613905/TVBoxOS TVBoxOSC
 echo "sourceURL=https://github.com/q215613905/TVBoxOS" >> $GITHUB_ENV
-chmod +x ./TVBoxOSC
+# chmod +x ./TVBoxOSC
 diy_TIME=$(date "+%Y.%m.%d")
+touch ./config.sh
 cat << 'EOF' > ./config.sh
 #!/bin/bash
 echo 'crosswalk源，防挂'
