@@ -51,6 +51,9 @@ jobs:
               source ./custom.sh
             )
           fi
+          sed -i "/android:text=/s#=\"#=\"版本号: ${{ env.diy_TIME }}\\\\n\\\\n#" TVBoxOSC/app/src/main/res/layout/dialog_about.xml
+          sed -i "/versionName/s#[0-9a-zA-Z_\.\'\"-]\+\$#\'版本号: ${{ env.diy_TIME }}\'#" TVBoxOSC/app/build.gradle
+          echo '插入版本号完成'
 
       #- name: 压缩 修改后的源代码
       #  working-directory: TVBoxOSC
@@ -79,9 +82,6 @@ jobs:
         working-directory: ${{ github.workspace }}
         run: |         
           source ./ApkSign.sh
-          sed -i "/android:text=/s#=\"#=\"版本号：${{ diy_TIME }}\\\\n\\\\n#" TVBoxOSC/app/src/main/res/layout/dialog_about.xml
-          sed -i "/versionName/s#[0-9a-zA-Z_\.\'\"-]\+\$#\'版本号：${{ diy_TIME }}\'#" TVBoxOSC/app/build.gradle
-          echo '关于插入版本号完成'
 
       #- name: Setup JDK
       #  uses: actions/setup-java@v4
