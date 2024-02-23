@@ -30,6 +30,10 @@ jobs:
     name: 编译 ${{ inputs.source_branch }}
 
     steps:
+      - name: '设置系统时区'
+        run: 
+          sudo timedatectl set-timezone Asia/Shanghai
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
