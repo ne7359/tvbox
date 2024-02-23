@@ -55,7 +55,7 @@ jobs:
       - name: 压缩 修改后的源代码
         working-directory: TVBoxOSC
         run: |
-          tar -cJf source-${{ inputs.source_branch }}.tar.xz --exclude=.git --exclude=.github *
+          tar -cJf DIYsource.tar.xz --exclude=.git --exclude=.github *
 
       - name: 添加 arm64-v8a 支持
         if: ${{ inputs.android_arm64 }}
@@ -132,4 +132,4 @@ jobs:
 
           artifacts: |
             TVBoxOSC/apk/*.apk
-            # TVBoxOSC/*source*.*
+            # TVBoxOSC/DIYsource.*
