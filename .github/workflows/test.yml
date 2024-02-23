@@ -30,10 +30,6 @@ jobs:
     name: 编译 ${{ inputs.source_branch }}
 
     steps:
-      - name: '设置系统时区'
-        run: 
-          sudo timedatectl set-timezone Asia/Shanghai
-
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -83,6 +79,9 @@ jobs:
         working-directory: ${{ github.workspace }}
         run: |         
           source ./ApkSign.sh
+          sed -i "/android:text=/s#=\"#=\"版本号：${{ diy_TIME }}\\\\n\\\\n#" TVBoxOSC/app/src/main/res/layout/dialog_about.xml
+          sed -i "/versionName/s#[0-9a-zA-Z_\.\'\"-]\+\$#\'版本号：${{ diy_TIME }}\'#" TVBoxOSC/app/build.gradle
+          echo '关于插入版本号完成'
 
       #- name: Setup JDK
       #  uses: actions/setup-java@v4
