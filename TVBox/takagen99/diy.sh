@@ -33,7 +33,7 @@ sed -i '/minSdkVersion/d' TVBoxOSC/app/build.gradle
 sed -i '/com.github.tvbox.osc.tk/a\        minSdkVersion 18' TVBoxOSC/app/build.gradle
 sed -i '/targetSdkVersion/d' TVBoxOSC/app/build.gradle
 sed -i '/minSdkVersion/a\        targetSdkVersion 26' TVBoxOSC/app/build.gradle
-# sed -i "/versionName/s#[0-9a-zA-Z_\.\'\"-]\+\$#\'版本号：${diy_TIME}\'#" TVBoxOSC/app/build.gradle
+sed -i "/versionName/s#[0-9a-zA-Z_\.\'\"-]\+\$#\'版本号：${diy_TIME}\'#" TVBoxOSC/app/build.gradle
 
 echo '修改-关于'
 sed -i '/android:text=/d' TVBoxOSC/app/src/main/res/layout/dialog_about.xml
