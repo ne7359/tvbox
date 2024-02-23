@@ -2,7 +2,8 @@
 
 echo "sourceURL=https://github.com/takagen99/Box" >> $GITHUB_ENV 
 # echo "tag=$(git log --date=format:'%Y.%m.%d-%H.%M' -1 --pretty=format:%cd)" >> $GITHUB_ENV
-echo "tag=$(date "+%Y年%m月%d日-%H点%M分")" >> $GITHUB_ENV   # 添加编译时间
+# echo "tag=$(date "+%Y年%m月%d日-%H点%M分")" >> $GITHUB_ENV   # 添加编译时间
+echo "tag=$(date "+%Y.%m.%d-%H.%M")" >> $GITHUB_ENV   # 添加编译时间
 echo '生成日期完成'
 echo "sourceName=T" >> $GITHUB_ENV
 
