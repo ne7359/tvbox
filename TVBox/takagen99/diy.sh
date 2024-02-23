@@ -95,8 +95,8 @@ mv TVBox/img/app_banner.png TVBoxOSC/app/src/main/res/drawable/app_banner.png
 #sed -i 's/@dimen\/vs_190/match_parent/g' $CURRENT_DIR/$DIR/app/src/main/res/layout/item_series.xml
 
 #FongMi的jar支持
-echo "" >> TVBoxOSC/app/proguard-rules.pro
-echo "-keep class com.google.gson.**{*;}" >> TVBoxOSC/app/proguard-rules.pro
+#echo "" >> TVBoxOSC/app/proguard-rules.pro
+#echo "-keep class com.google.gson.**{*;}" >> TVBoxOSC/app/proguard-rules.pro
 EOF
 chmod +x ./custom.sh
 
