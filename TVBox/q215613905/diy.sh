@@ -1,12 +1,13 @@
 #!/bin/bash
-
+sudo timedatectl set-timezone Asia/Shanghai
 echo "sourceURL=https://github.com/q215613905/TVBoxOS" >> $GITHUB_ENV 
 # echo "tag=$(git log --date=format:'%Y.%m.%d-%H.%M' -1 --pretty=format:%cd)" >> $GITHUB_ENV
-echo "tag=$(date "+%Y年%m月%d日-%H点%M分")" >> $GITHUB_ENV   # 添加编译时间
-echo '生成日期完成'
+# echo "tag=$(date "+%Y年%m月%d日-%H点%M分")" >> $GITHUB_ENV   # 添加编译时间
+echo "tag=$(date "+%Y.%m.%d-%H.%M")" >> $GITHUB_ENV   # 添加编译时间
 echo "sourceName=Q" >> $GITHUB_ENV
+echo "diy_TIME=$(date "+%Y.%m.%d")" >> $GITHUB_ENV   # 添加版本号变量
+echo '生成日期完成'
 
-diy_TIME=$(date "+%Y.%m.%d")
 touch ./custom.sh
 cat << 'EOF' > ./custom.sh
 #!/bin/bash
@@ -22,28 +23,33 @@ sed -i 's/com.github.tvbox.osc/com.github.tvbox.osc.qtm/g' TVBoxOSC/app/build.gr
 echo '关于更改'
 sed -i '/android:text=/d' TVBoxOSC/app/src/main/res/layout/dialog_about.xml
 sed -i '/ingMultiplier=/a\        android:text="        本软件只提供聚合展示功能，所有资源来自网上, 软件不参与任何制作, 上传, 储存, 下载等内容. 软件仅供学习参考, 请于安装后24小时内删除。\\n\\n\\n                                                                    QTM 编译"' TVBoxOSC/app/src/main/res/layout/dialog_about.xml
-echo '关于插入版本号'
-sed -i "/android:text=/s#=\"#=\"版本号：${diy_TIME}\\\\n\\\\n#" TVBoxOSC/app/src/main/res/layout/dialog_about.xml
-sed -i "/versionName/s#[0-9a-zA-Z_\.\'\"-]\+\$#\'版本号：${diy_TIME}\'#" TVBoxOSC/app/build.gradle
+
 echo '修改请勿商用以及播放违法内容'
 sed -i 's/开源测试软件,请勿商用以及播放违法内容/请勿商用以及播放违法内容/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/LivePlayActivity.java
+
 echo '添加内置播放源地址'
 sed -i 's|API_URL, ""|API_URL, "https://cyao.eu.org/files/n.json"|g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/api/ApiConfig.java
+
 echo '修改界面首页为主页'
 sed -i 's/请选择首页数据源/请选择主页数据源/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/HomeActivity.java
 sed -i 's/自定义jar加载成功/数据加载成功/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/HomeActivity.java
 sed -i 's/jar加载失败/数据加载失败/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/HomeActivity.java
+
 echo '修改数据源列表，超过10个源起用三列排列'
 sed -i 's/Math.floor(sites.size()\/60/Math.floor(sites.size()\/10/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/HomeActivity.java
+
 echo '修改远程管理首页名'
 sed -i 's/TVBox/QTM影视/g' TVBoxOSC/app/src/main/res/raw/index.html
+
 echo '软件名称修改'
 sed -i 's/TVBox/QTM影视/g' TVBoxOSC/app/src/main/res/values/strings.xml
+
 echo '图标修改'
 mv TVBox/img/01/app_icon.png TVBoxOSC/app/src/main/res/drawable-hdpi/app_icon.png
 mv TVBox/img/02/app_icon.png TVBoxOSC/app/src/main/res/drawable-xhdpi/app_icon.png
 mv TVBox/img/03/app_icon.png TVBoxOSC/app/src/main/res/drawable-xxhdpi/app_icon.png
 mv TVBox/img/04/app_icon.png TVBoxOSC/app/src/main/res/drawable-xxxhdpi/app_icon.png
+
 echo '背景修改'
 mv TVBox/img/bg/app_bg.png TVBoxOSC/app/src/main/res/drawable/app_bg.png
 
