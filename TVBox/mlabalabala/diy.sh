@@ -53,15 +53,15 @@ echo '软件名称修改'
 sed -i 's/Jade/QTM影视/g' TVBoxOSC/app/src/main/res/values/strings.xml
 
 echo '图标修改'
-mv TVBox/img/01/app_icon.png TVBoxOSC/app/src/main/res/drawable-hdpi/app_icon.png
-mv TVBox/img/02/app_icon.png TVBoxOSC/app/src/main/res/drawable-xhdpi/app_icon.png
-mv TVBox/img/03/app_icon.png TVBoxOSC/app/src/main/res/drawable-xxhdpi/app_icon.png
-mv TVBox/img/04/app_icon.png TVBoxOSC/app/src/main/res/drawable-xxxhdpi/app_icon.png
+cp -f TVBox/img/01/app_icon.png TVBoxOSC/app/src/main/res/drawable-hdpi/app_icon.png
+cp -f TVBox/img/02/app_icon.png TVBoxOSC/app/src/main/res/drawable-xhdpi/app_icon.png
+cp -f TVBox/img/03/app_icon.png TVBoxOSC/app/src/main/res/drawable-xxhdpi/app_icon.png
+cp -f TVBox/img/04/app_icon.png TVBoxOSC/app/src/main/res/drawable-xxxhdpi/app_icon.png
 
 echo '背景修改'
-mv TVBox/img/bg/app_bg.png TVBoxOSC/app/src/main/res/drawable/app_bg.png
-mv TVBox/img/app_banner.png TVBoxOSC/app/src/main/res/drawable/app_banner.png
-mv TVBox/img/04/app_icon.png TVBoxOSC/app/src/main/res/drawable/app_icon.png
+cp -f TVBox/img/bg/app_bg.png TVBoxOSC/app/src/main/res/drawable/app_bg.png
+cp -f TVBox/img/app_banner.png TVBoxOSC/app/src/main/res/drawable/app_banner.png
+cp -f TVBox/img/04/app_icon.png TVBoxOSC/app/src/main/res/drawable/app_icon.png
 
 #播放界面修改 1.底部控件重排 2.直播增加分辨率显示
 # cp TVBox/q215613905/xmljava/activity_live_play.xml TVBoxOSC/app/src/main/res/layout/activity_live_play.xml
