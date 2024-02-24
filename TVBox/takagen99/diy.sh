@@ -41,9 +41,9 @@ sed -i '/android:text=/d' TVBoxOSC/app/src/main/res/layout/dialog_about.xml
 sed -i '/shadowRadius=/a\        android:text="        本软件只提供聚合展示功能，所有资源来自网上, 软件不参与任何制作, 上传, 储存, 下载等内容. 软件仅供学习参考, 请于安装后24小时内删除。\\n\\n\\n                                                                    QTM 编译"' TVBoxOSC/app/src/main/res/layout/dialog_about.xml
 
 echo '关于插入版本号'
-sed -i "/android:text=/s#=\"#=\"版本号：${{ env.diy_TIME }}\\\\n\\\\n#" TVBoxOSC/app/src/main/res/layout/dialog_about.xml
+sed -i "/android:text=/s#=\"#=\"版本号：${ env.diy_TIME }\\\\n\\\\n#" TVBoxOSC/app/src/main/res/layout/dialog_about.xml
 # 插入版本号
-sed -i "/versionName/s#[0-9a-zA-Z_\.\'\"-]\+\$#\'版本号：${{ env.diy_TIME }}\'#" TVBoxOSC/app/build.gradle
+sed -i "/versionName/s#[0-9a-zA-Z_\.\'\"-]\+\$#\'版本号：${ env.diy_TIME }\'#" TVBoxOSC/app/build.gradle
 
 echo '修改远程管理首页名'
 sed -i 's/TVBox/QTM影视/g' TVBoxOSC/app/src/main/res/raw/index.html
