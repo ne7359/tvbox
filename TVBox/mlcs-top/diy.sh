@@ -27,8 +27,6 @@ sed -i 's/color_353744/color_1890FF/g' TVBoxOSC/app/src/main/res/drawable/shape_
 EOF
 chmod +x ./custom.sh
 
-sed -i "/versionName/s#[0-9a-zA-Z_\.\'\"-]\+\$#\'${{ env.diy_TIME }}\'#" TVBoxOSC/app/build.gradle
-
 touch ./ApkSign.sh
 cat << 'EOF' > ./ApkSign.sh
 #!/bin/bash
