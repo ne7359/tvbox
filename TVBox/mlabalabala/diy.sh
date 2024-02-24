@@ -11,29 +11,34 @@ echo '生成日期完成'
 touch ./custom.sh
 cat << 'EOF' > ./custom.sh
 #!/bin/bash
-echo 'crosswalk源，防挂'
-if grep -q 'crosswalk' TVBoxOSC/build.gradle; then
-sed -i "/crosswalk/a\        maven { url 'https://o0halflife0o.github.io/crosswalk/releases/crosswalk/android/maven2' }" TVBoxOSC/build.gradle
-else
-sed -i "/jitpack.io/a\        maven { url 'https://o0halflife0o.github.io/crosswalk/releases/crosswalk/android/maven2' }" TVBoxOSC/build.gradle
-fi
+# echo 'crosswalk源，防挂'
+# if grep -q 'crosswalk' TVBoxOSC/build.gradle; then
+# sed -i "/crosswalk/a\        maven { url 'https://o0halflife0o.github.io/crosswalk/releases/crosswalk/android/maven2' }" TVBoxOSC/build.gradle
+# else
+# sed -i "/jitpack.io/a\        maven { url 'https://o0halflife0o.github.io/crosswalk/releases/crosswalk/android/maven2' }" TVBoxOSC/build.gradle
+# fi
 
 echo '更改软件包名使共存'
-sed -i 's/com.github.tvbox.osc/com.github.tvbox.osc.qtm/g' TVBoxOSC/app/build.gradle
+sed -i 's/tv.org.eu.bunnyabc/com.github.tvbox.osc.qtm/g' TVBoxOSC/app/build.gradle
+
 echo '关于更改'
 sed -i '/android:text=/d' TVBoxOSC/app/src/main/res/layout/dialog_about.xml
 sed -i '/ingMultiplier=/a\        android:text="        本软件只提供聚合展示功能，所有资源来自网上, 软件不参与任何制作, 上传, 储存, 下载等内容. 软件仅供学习参考, 请于安装后24小时内删除。\\n\\n\\n                                                                    QTM 编译"' TVBoxOSC/app/src/main/res/layout/dialog_about.xml
 
 echo '修改请勿商用以及播放违法内容'
-sed -i 's/开源测试软件,请勿商用以及播放违法内容/请勿商用以及播放违法内容/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/LivePlayActivity.java
+sed -i 's/开源测试软件,请勿商用以及播放违法内容/请勿商用以及播放违法内容/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/bbox/ui/activity/LivePlayActivity.java
 
 echo '添加内置播放源地址'
-sed -i 's|API_URL, ""|API_URL, "https://cyao.eu.org/files/n.json"|g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/api/ApiConfig.java
+sed -i 's|API_URL, ""|API_URL, "https://cyao.eu.org/files/n.json"|g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/bbox/api/ApiConfig.java
+echo '添加内置直源地址'
+sed -i 's|LIVE_URL, ""|LIVE_URL, "https://cyao.eu.org/files/n.json"|g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/bbox/api/ApiConfig.java
+echo '添加内置EPG地址'
+sed -i 's|EPG_URL, ""|EPG_URL, "https://cyao.eu.org/files/n.json"|g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/bbox/api/ApiConfig.java
 
 echo '修改界面首页为主页'
-sed -i 's/请选择首页数据源/请选择主页数据源/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/HomeActivity.java
-sed -i 's/自定义jar加载成功/数据加载成功/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/HomeActivity.java
-sed -i 's/jar加载失败/数据加载失败/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/HomeActivity.java
+sed -i 's/请选择首页数据源/请选择主页数据源/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/bbox/ui/activity/HomeActivity.java
+sed -i 's/自定义jar加载成功/数据加载成功/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/bbox/ui/activity/HomeActivity.java
+sed -i 's/jar加载失败/数据加载失败/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/bbox/ui/activity/HomeActivity.java
 
 echo '修改数据源列表，超过10个源起用三列排列'
 sed -i 's/Math.floor(sites.size()\/60/Math.floor(sites.size()\/10/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/HomeActivity.java
