@@ -14,7 +14,7 @@ cat << 'EOF' > ./custom.sh
 # 未测试
 echo '版本降低至18 安卓4.4'
 sed -i '/minSdkVersion/d' TVBoxOSC/app/build.gradle
-sed -i '/com.github.tvbox.osc.tk/a\        minSdkVersion 19' TVBoxOSC/app/build.gradle
+sed -i '/com.github.tvbox.osc.tk/a\        minSdkVersion 16' TVBoxOSC/app/build.gradle
 sed -i '/targetSdkVersion/d' TVBoxOSC/app/build.gradle
 sed -i '/minSdkVersion/a\        targetSdkVersion 29' TVBoxOSC/app/build.gradle
 
