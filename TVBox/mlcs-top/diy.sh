@@ -5,12 +5,19 @@ echo "sourceURL=https://github.com/mlcs-top/iTVBox" >> $GITHUB_ENV
 # echo "tag=$(date "+%Y年%m月%d日-%H点%M分")" >> $GITHUB_ENV   # 添加编译时间
 echo "tag=$(date "+%Y.%m.%d-%H.%M")" >> $GITHUB_ENV   # 添加编译时间
 echo "sourceName=ml" >> $GITHUB_ENV
-# echo "diy_TIME=$(date "+%Y.%m.%d")" >> $GITHUB_ENV   # 添加版本号变量
+echo "diy_TIME=$(date "+%Y.%m.%d")" >> $GITHUB_ENV   # 添加版本号变量
 echo '生成日期完成'
 
 touch ./custom.sh
 cat << 'EOF' > ./custom.sh
 #!/bin/bash
+# 未测试
+echo '版本降低至18 安卓4.4'
+sed -i '/minSdkVersion/d' TVBoxOSC/app/build.gradle
+sed -i '/com.github.tvbox.osc.tk/a\        minSdkVersion 18' TVBoxOSC/app/build.gradle
+sed -i '/targetSdkVersion/d' TVBoxOSC/app/build.gradle
+sed -i '/minSdkVersion/a\        targetSdkVersion 29' TVBoxOSC/app/build.gradle
+
 #主界面首页文字修改
 sed -i 's/color_BBFFFFFF/color_FFFFFF/g' TVBoxOSC/app/src/main/res/layout/item_home_sort.xml
 sed -i 's/color_BBFFFFFF/color_FFFFFF/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/HomeActivity.java
@@ -19,6 +26,8 @@ sed -i 's/color_BBFFFFFF/color_FFFFFF/g' TVBoxOSC/app/src/main/java/com/github/t
 sed -i 's/color_353744/color_1890FF/g' TVBoxOSC/app/src/main/res/drawable/shape_player_control_vod_seek.xml
 EOF
 chmod +x ./custom.sh
+
+sed -i "/versionName/s#[0-9a-zA-Z_\.\'\"-]\+\$#\'版本号: ${{ env.diy_TIME }}\'#" TVBoxOSC/app/build.gradle
 
 touch ./ApkSign.sh
 cat << 'EOF' > ./ApkSign.sh
