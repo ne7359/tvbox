@@ -41,13 +41,16 @@ sed -i 's/自定义jar加载成功/数据加载成功/g' TVBoxOSC/app/src/main/j
 sed -i 's/jar加载失败/数据加载失败/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/bbox/ui/activity/HomeActivity.java
 
 echo '修改数据源列表，超过10个源起用三列排列'
-sed -i 's/Math.floor(sites.size()\/60/Math.floor(sites.size()\/10/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/HomeActivity.java
+sed -i 's/Math.floor(sites.size()\/60/Math.floor(sites.size()\/10/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/bbox/ui/activity/HomeActivity.java
 
 echo '修改远程管理首页名'
-sed -i 's/TVBox/QTM影视/g' TVBoxOSC/app/src/main/res/raw/index.html
+sed -i 's/T V B O X/QTM影视/g' TVBoxOSC/app/src/main/res/raw/index.html
+sed -i 's/搜 索/QTM影视 . 搜索/g' TVBoxOSC/app/src/main/res/raw/index.html
+sed -i 's/推 送/QTM影视 . 推送/g' TVBoxOSC/app/src/main/res/raw/index.html
+sed -i 's/接 口/QTM影视 . 接口/g' TVBoxOSC/app/src/main/res/raw/index.html
 
 echo '软件名称修改'
-sed -i 's/TVBox/QTM影视/g' TVBoxOSC/app/src/main/res/values/strings.xml
+sed -i 's/Jade/QTM影视/g' TVBoxOSC/app/src/main/res/values/strings.xml
 
 echo '图标修改'
 mv TVBox/img/01/app_icon.png TVBoxOSC/app/src/main/res/drawable-hdpi/app_icon.png
@@ -57,6 +60,8 @@ mv TVBox/img/04/app_icon.png TVBoxOSC/app/src/main/res/drawable-xxxhdpi/app_icon
 
 echo '背景修改'
 mv TVBox/img/bg/app_bg.png TVBoxOSC/app/src/main/res/drawable/app_bg.png
+mv TVBox/img/app_banner.png TVBoxOSC/app/src/main/res/drawable/app_banner.png
+mv TVBox/img/04/app_icon.png TVBoxOSC/app/src/main/res/drawable/app_icon.png
 
 #播放界面修改 1.底部控件重排 2.直播增加分辨率显示
 # cp TVBox/q215613905/xmljava/activity_live_play.xml TVBoxOSC/app/src/main/res/layout/activity_live_play.xml
@@ -65,17 +70,17 @@ mv TVBox/img/bg/app_bg.png TVBoxOSC/app/src/main/res/drawable/app_bg.png
 # cp TVBox/q215613905/xmljava/LivePlayActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/LivePlayActivity.java
 
 #修改播放器进度条消失时间
-sed -i 's/10000/6000/g'  TVBoxOSC/app/src/main/java/com/github/tvbox/osc/player/controller/VodController.java
+sed -i 's/10000/6000/g'  TVBoxOSC/app/src/main/java/com/github/tvbox/osc/bbox/player/controller/VodController.java
 
 #主界面首页文字修改
 sed -i 's/color_BBFFFFFF/color_FFFFFF/g' TVBoxOSC/app/src/main/res/layout/item_home_sort.xml
-sed -i 's/color_BBFFFFFF/color_FFFFFF/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/HomeActivity.java
+sed -i 's/color_BBFFFFFF/color_FFFFFF/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/bbox/ui/activity/HomeActivity.java
 
 #进度条颜色
-sed -i 's/color_353744/color_1890FF/g' TVBoxOSC/app/src/main/res/drawable/shape_player_control_vod_seek.xml
+sed -i 's/color_6C3D3D3D/color_1890FF/g' TVBoxOSC/app/src/main/res/drawable/shape_player_control_vod_seek.xml
 
 #长按倍速修改为2
-# sed -i 's/3.0/2.0/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/player/controller/VodController.java
+# sed -i 's/3.0/2.0/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/bbox/player/controller/VodController.java
 
 #FongMi的jar支持
 # echo "" >> TVBoxOSC/app/proguard-rules.pro
