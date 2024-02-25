@@ -1,5 +1,5 @@
 ## Box
-=== Source Code - Editing the app default settings === /src/main/java/com/github/tvbox/osc/base/App.java
+=== 源代码 - 编辑应用程序默认设置 === /src/main/java/com/github/tvbox/osc/base/App.java
 ```
 private void initParams() {
 
