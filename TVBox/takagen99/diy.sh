@@ -28,8 +28,8 @@ sed -i '/com.github.tvbox.osc.tk/a\        minSdkVersion 21' TVBoxOSC/app/build.
 sed -i '/targetSdkVersion/d' TVBoxOSC/app/build.gradle
 sed -i '/minSdkVersion/a\        targetSdkVersion 29' TVBoxOSC/app/build.gradle
 
-sed -i '/minSdk 19/d' TVBoxOSC/quickjs/build.gradle
-sed -i '/targetSdk 29/d' TVBoxOSC/quickjs/build.gradle
+sed -i '/minSdk/d' TVBoxOSC/quickjs/build.gradle
+sed -i '/targetSdk/d' TVBoxOSC/quickjs/build.gradle
 sed -i '/defaultConfig/a\        minSdk 21' TVBoxOSC/quickjs/build.gradle
 sed -i '/minSdk 21/a\        targetSdk 29' TVBoxOSC/quickjs/build.gradle
 
