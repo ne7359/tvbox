@@ -30,8 +30,8 @@ sed -i '/minSdkVersion/a\        targetSdkVersion 29' TVBoxOSC/app/build.gradle
 
 sed -i '/minSdk 19/d' TVBoxOSC/quickjs/build.gradle
 sed -i '/targetSdk 29/d' TVBoxOSC/quickjs/build.gradle
-sed -i '/defaultConfig/a\       minSdk 21' TVBoxOSC/quickjs/build.gradle
-sed -i '/minSdk 21/a\       targetSdk 29' TVBoxOSC/quickjs/build.gradle
+sed -i '/defaultConfig/a\        minSdk 21' TVBoxOSC/quickjs/build.gradle
+sed -i '/minSdk 21/a\        targetSdk 29' TVBoxOSC/quickjs/build.gradle
 
 #echo '版本降低至minSdkVersion 18 targetSdkVersion 26 用于支持安卓4.4'
 #sed -i '/minSdkVersion/d' TVBoxOSC/app/build.gradle
