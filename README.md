@@ -1,6 +1,7 @@
 # tvbox
 
-## takagen99 已支持 PY 编译时不需要添加 PY 支持代码
+
+> ### 警告：takagen99 已支持 PY 编译时不需要添加 PY 支持代码
 
 Android各版本对应的SDK版本：
 |平台版本|	SDK版本	| 版本名称 |JDK版本|
