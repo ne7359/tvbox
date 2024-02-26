@@ -85,7 +85,7 @@ cp -f TVBox/img/bg/app_bg.png TVBoxOSC/app/src/main/res/drawable/app_bg.png
 #cp TVBox/takagen99/xmljava/SearchActivity.java TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/SearchActivity.java
 
 #长按倍速修改为2
-#sed -i 's/3.0/2.0/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/player/controller/VodController.java
+#sed -i 's/3.0f/2.0f/g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/player/controller/VodController.java
 
 #添加详情页播放列表宽度自适
 #sed -i '/import me.jessyan.autosize.utils.AutoSizeUtils;/a\import android.graphics.Rect;\nimport android.graphics.Paint;\nimport android.text.TextPaint;\nimport androidx.annotation.NonNull;\nimport android.graphics.Typeface;\nimport androidx.recyclerview.widget.RecyclerView;' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/DetailActivity.java
