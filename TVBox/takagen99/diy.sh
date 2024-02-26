@@ -55,11 +55,11 @@ sed -i 's#"app_source"><#"app_source">https://cyao.eu.org/files/n.json<#g' TVBox
 sed -i 's#"app_source"><#"app_source">https://cyao.eu.org/files/n.json<#g' TVBoxOSC/app/src/main/res/values/strings.xml
 
 #图标修改
-mv TVBox/img/04/app_icon.png TVBoxOSC/app/src/main/res/drawable/app_icon.png
-mv TVBox/img/app_banner.png TVBoxOSC/app/src/main/res/drawable/app_banner.png
+cp -f TVBox/img/04/app_icon.png TVBoxOSC/app/src/main/res/drawable/app_icon.png
+cp -f TVBox/img/app_banner.png TVBoxOSC/app/src/main/res/drawable/app_banner.png
 
 #背景修改
-# mv TVBox/img/bg/app_bg.png TVBoxOSC/app/src/main/res/drawable/app_bg.png
+cp -f TVBox/img/bg/app_bg.png TVBoxOSC/app/src/main/res/drawable/app_bg.png
 
 # 主页UI调整 恢复老版；默认多行显示
 #cp TVBox/takagen99/xmljava/fragment_user.xml TVBoxOSC/app/src/main/res/layout/fragment_user.xml
