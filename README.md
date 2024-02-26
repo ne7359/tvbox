@@ -1,5 +1,7 @@
 # tvbox
 
+## takagen99 已支持 PY 编译时不需要添加 PY 支持代码
+
 Android各版本对应的SDK版本：
 |平台版本|	SDK版本	| 版本名称 |JDK版本|
 |:--------:|:--------:|:--------:|:--------:|
@@ -19,8 +21,6 @@ Android各版本对应的SDK版本：
 | Android 5.0 | 21	| Lollipop | 7+
 | Android 4.4 | 19	| KITKAT | 6+
 | Android 4.3 | 18	| JELLY_BEAN_MR2 | 6+
-
-takagen99 已支持 PY 编译时不需要添加 PY 支持代码
 
 ### [TVBOX接口解密](https://www.lige.fit/ua)
 
