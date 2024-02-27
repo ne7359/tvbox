@@ -54,9 +54,6 @@ sed -i 's/TVBox/QTM影视/g' TVBoxOSC/app/src/main/res/values/strings.xml
 echo '添加内置播放源地址'
 sed -i 's#"app_source"><#"app_source">https://cyao.eu.org/files/n.json<#g' TVBoxOSC/app/src/main/res/values-zh/strings.xml
 sed -i 's#"app_source"><#"app_source">https://cyao.eu.org/files/n.json<#g' TVBoxOSC/app/src/main/res/values/strings.xml
-echo '添加内置直播播放源地址'
-sed -i 's|LIVE_URL, ""|LIVE_URL, "https://agit.ai/Yoursmile7/TVBox/raw/branch/master/live.txt"|g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/api/ApiConfig.java
-sed -i 's|EPG_URL, ""|EPG_URL, "http://diyp.112114.xyz/?ch={name}&date={date}"|g' TVBoxOSC/app/src/main/java/com/github/tvbox/osc/api/ApiConfig.java
 
 #图标修改
 cp -f TVBox/img/04/app_icon.png TVBoxOSC/app/src/main/res/drawable/app_icon.png
