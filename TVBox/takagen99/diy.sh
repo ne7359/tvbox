@@ -22,22 +22,27 @@ fi
 #sed -i 's/com.github.tvbox.osc.tk/com.github.tvbox.osc.qtm/g' TVBoxOSC/app/build.gradle
 
 # 未测试
-echo '修改为未降前 用于高版本安卓'
+#echo '修改为未降前 用于高版本安卓'
+#sed -i '/minSdkVersion/d' TVBoxOSC/app/build.gradle
+#sed -i '/com.github.tvbox.osc.tk/a\        minSdkVersion 21' TVBoxOSC/app/build.gradle
+#sed -i '/targetSdkVersion/d' TVBoxOSC/app/build.gradle
+#sed -i '/minSdkVersion/a\        targetSdkVersion 29' TVBoxOSC/app/build.gradle
+
+#sed -i '/minSdk/d' TVBoxOSC/quickjs/build.gradle
+#sed -i '/targetSdk/d' TVBoxOSC/quickjs/build.gradle
+#sed -i '/defaultConfig/a\        minSdk 21' TVBoxOSC/quickjs/build.gradle
+#sed -i '/minSdk/a\        targetSdk 29' TVBoxOSC/quickjs/build.gradle
+
+echo '版本降低至minSdkVersion 18 targetSdkVersion 26 用于支持安卓4.4'
 sed -i '/minSdkVersion/d' TVBoxOSC/app/build.gradle
-sed -i '/com.github.tvbox.osc.tk/a\        minSdkVersion 21' TVBoxOSC/app/build.gradle
+sed -i '/com.github.tvbox.osc.tk/a\        minSdkVersion 18' TVBoxOSC/app/build.gradle
 sed -i '/targetSdkVersion/d' TVBoxOSC/app/build.gradle
-sed -i '/minSdkVersion/a\        targetSdkVersion 29' TVBoxOSC/app/build.gradle
+sed -i '/minSdkVersion/a\        targetSdkVersion 26' TVBoxOSC/app/build.gradle
 
 sed -i '/minSdk/d' TVBoxOSC/quickjs/build.gradle
 sed -i '/targetSdk/d' TVBoxOSC/quickjs/build.gradle
-sed -i '/defaultConfig/a\        minSdk 21' TVBoxOSC/quickjs/build.gradle
-sed -i '/minSdk/a\        targetSdk 29' TVBoxOSC/quickjs/build.gradle
-
-#echo '版本降低至minSdkVersion 18 targetSdkVersion 26 用于支持安卓4.4'
-#sed -i '/minSdkVersion/d' TVBoxOSC/app/build.gradle
-#sed -i '/com.github.tvbox.osc.tk/a\        minSdkVersion 18' TVBoxOSC/app/build.gradle
-#sed -i '/targetSdkVersion/d' TVBoxOSC/app/build.gradle
-#sed -i '/minSdkVersion/a\        targetSdkVersion 26' TVBoxOSC/app/build.gradle
+sed -i '/defaultConfig/a\        minSdk 18' TVBoxOSC/quickjs/build.gradle
+sed -i '/minSdk/a\        targetSdk 26' TVBoxOSC/quickjs/build.gradle
 
 echo '修改-关于'
 sed -i '/android:text=/d' TVBoxOSC/app/src/main/res/layout/dialog_about.xml
