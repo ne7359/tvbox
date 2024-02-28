@@ -136,3 +136,11 @@ jobs:
 
           artifacts: |
             TVBoxOSC/apk/*.apk
+
+      - name: Upload to 123网盘
+        run: |
+          # 使用curl命令将编译好的程序发送到123网盘
+          curl -T TVBoxOSC/apk/*.apk https://www.123pan.com/upload
+        env:
+          USERNAME: ${{ secrets.USERNAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}
