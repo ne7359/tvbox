@@ -11,7 +11,8 @@ echo '生成日期完成'
 diy_TIME=`date "+%Y.%m.%d"`
 
 touch ./custom.sh
-cat << 'EOF' > ./custom.sh
+# cat << 'EOF' > ./custom.sh
+cat << "EOF" > ./custom.sh
 #!/bin/bash
 echo 'crosswalk源，防挂'
 if grep -q 'crosswalk' TVBoxOSC/build.gradle; then
