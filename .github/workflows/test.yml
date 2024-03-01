@@ -47,19 +47,13 @@ jobs:
         run: |
           git clone -b main --depth=1 ${{ env.sourceURL }} TVBoxOSC
           chmod +x ./TVBoxOSC
-          #if [ -f "./TVBoxOSC/app/build.gradle" ]; then
-          #  (
-          #    source ./custom.sh
-          #  )
-          #fi
           if [[ -f "./TVBoxOSC/app/build.gradle" && -f "./custom.sh" ]]; then
             chmod +x ./custom.sh
             ./custom.sh
           else
-            echo "custom.sh文件不存在."
+            echo "检查custom.sh文件不存在."
           fi
           sed -i "/android:text=/s#=\"#=\"版本号: ${{ env.diy_TIME }}\\\\n\\\\n#" TVBoxOSC/app/src/main/res/layout/dialog_about.xml
-          # sed -i "/versionName/s#[0-9a-zA-Z_\.\'\"-]\+\$#\'版本号: ${{ env.diy_TIME }}\'#" TVBoxOSC/app/build.gradle
 
       #- name: 压缩 修改后的源代码
       #  working-directory: TVBoxOSC
