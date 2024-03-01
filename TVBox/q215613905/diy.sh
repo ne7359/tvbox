@@ -18,6 +18,9 @@ else
 sed -i "/jitpack.io/a\        maven { url 'https://o0halflife0o.github.io/crosswalk/releases/crosswalk/android/maven2' }" TVBoxOSC/build.gradle
 fi
 
+echo '更改软件包名使共存'
+sed -i 's/com.github.tvbox.osc/com.github.tvbox.osc.qtm/g' TVBoxOSC/app/build.gradle
+
 echo '更改versionName为1.0.自动编译时间'
 sed -i '/com.android.application/a\def static buildTime() {' TVBoxOSC/app/build.gradle
 sed -i '/def static buildTime/a\    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("GMT+08:00"))' TVBoxOSC/app/build.gradle
@@ -25,8 +28,9 @@ sed -i '/return new Date().format/a\}' TVBoxOSC/app/build.gradle
 sed -i '/versionName/d' TVBoxOSC/app/build.gradle
 sed -i '/versionCode/a\        versionName "1.0.".concat(buildTime())' TVBoxOSC/app/build.gradle
 
-echo '更改软件包名使共存'
-sed -i 's/com.github.tvbox.osc/com.github.tvbox.osc.qtm/g' TVBoxOSC/app/build.gradle
+# echo 'versionName更改版本号'
+# sed -i "/versionName/s#[0-9a-zA-Z_\.\'\"-]\+\$#\'版本号: ${{ env.diy_TIME }}\'#" TVBoxOSC/app/build.gradle
+
 echo '关于更改'
 sed -i '/android:text=/d' TVBoxOSC/app/src/main/res/layout/dialog_about.xml
 sed -i '/ingMultiplier=/a\        android:text="        本软件只提供聚合展示功能，所有资源来自网上, 软件不参与任何制作, 上传, 储存, 下载等内容. 软件仅供学习参考, 请于安装后24小时内删除。\\n\\n\\n                                                                    QTM 编译"' TVBoxOSC/app/src/main/res/layout/dialog_about.xml
