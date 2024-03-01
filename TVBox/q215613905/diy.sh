@@ -18,7 +18,10 @@ else
 sed -i "/jitpack.io/a\        maven { url 'https://o0halflife0o.github.io/crosswalk/releases/crosswalk/android/maven2' }" TVBoxOSC/build.gradle
 fi
 
-echo '更改versionName'
+echo '更改versionName为1.0.编译时间'
+sed -i '/com.android.application/a\def static buildTime() {' TVBoxOSC/app/build.gradle
+sed -i '/def static buildTime/a\    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("GMT+08:00"))' TVBoxOSC/app/build.gradle
+sed -i '/return new Date().format/a\}' TVBoxOSC/app/build.gradle
 sed -i '/versionName/d' TVBoxOSC/app/build.gradle
 sed -i '/versionCode/a\        versionName "1.0.".concat(buildTime())' TVBoxOSC/app/build.gradle
 
