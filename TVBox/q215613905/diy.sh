@@ -18,6 +18,10 @@ else
 sed -i "/jitpack.io/a\        maven { url 'https://o0halflife0o.github.io/crosswalk/releases/crosswalk/android/maven2' }" TVBoxOSC/build.gradle
 fi
 
+echo '更改versionName'
+sed -i '/versionName/d' TVBoxOSC/app/build.gradle
+sed -i '/versionCode/a\        versionName "1.0.".concat(buildTime())' TVBoxOSC/app/build.gradle
+
 echo '更改软件包名使共存'
 sed -i 's/com.github.tvbox.osc/com.github.tvbox.osc.qtm/g' TVBoxOSC/app/build.gradle
 echo '关于更改'
