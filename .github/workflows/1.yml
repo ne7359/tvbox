@@ -17,11 +17,11 @@ on:
       source_branch:
         description: "选择TVBox源分支"
         required: false
-        default: "俊版"
+        default: "takagen99"
         type: choice
         options:
           - q215613905
-          - 俊版
+          - takagen99
           - mlabalabala
 
 jobs:
