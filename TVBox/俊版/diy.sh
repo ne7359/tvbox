@@ -8,7 +8,7 @@ echo "sourceName=T" >> $GITHUB_ENV
 echo "diy_TIME=$(date "+%Y.%m.%d")" >> $GITHUB_ENV   # 添加版本号编译时间变量
 echo '生成日期完成'
 
-export TIME_VALUE="${{ date "+%Y.%m.%d" }}"
+export TIME_VALUE="$(date "+%Y.%m.%d")"
 
 touch ./custom.sh
 cat << 'EOF' > ./custom.sh
