@@ -5,10 +5,8 @@ echo "sourceURL=https://github.com/takagen99/Box" >> $GITHUB_ENV
 # echo "tag=$(date "+%Y年%m月%d日-%H点%M分")" >> $GITHUB_ENV   # 添加编译时间
 echo "tag=$(date "+%Y.%m.%d-%H.%M")" >> $GITHUB_ENV   # 添加编译时间
 echo "sourceName=T" >> $GITHUB_ENV
-echo "diy_TIME=$(date "+%Y.%m.%d")" >> $GITHUB_ENV   # 添加版本号变量
+echo "diy_TIME=$(date "+%Y.%m.%d")" >> $GITHUB_ENV   # 添加版本号编译时间变量
 echo '生成日期完成'
-
-# diy_TIME=`date "+%Y.%m.%d"`
 
 touch ./custom.sh
 cat << 'EOF' > ./custom.sh
@@ -46,7 +44,8 @@ sed -i '/targetSdk/d' TVBoxOSC/quickjs/build.gradle
 sed -i '/defaultConfig/a\        minSdk 18' TVBoxOSC/quickjs/build.gradle
 sed -i '/minSdk/a\        targetSdk 26' TVBoxOSC/quickjs/build.gradle
 
-echo '修改-关于'
+echo '关于-修改并添加编译时间'
+sed -i "/android:text=/s#=\"#=\"版本号: ${{ env.diy_TIME }}\\\\n\\\\n#" TVBoxOSC/app/src/main/res/layout/dialog_about.xml    # 添加DIY编译时间
 sed -i '/android:text=/d' TVBoxOSC/app/src/main/res/layout/dialog_about.xml
 sed -i '/shadowRadius=/a\        android:text="        本软件只提供聚合展示功能，所有资源来自网上, 软件不参与任何制作, 上传, 储存, 下载等内容. 软件仅供学习参考, 请于安装后24小时内删除。\\n\\n\\n                                                                    QTM 编译"' TVBoxOSC/app/src/main/res/layout/dialog_about.xml
 
