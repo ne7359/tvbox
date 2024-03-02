@@ -107,7 +107,8 @@ cp -f TVBox/img/bg/app_bg.png TVBoxOSC/app/src/main/res/drawable/app_bg.png
 #echo "-keep class com.google.gson.**{*;}" >> TVBoxOSC/app/proguard-rules.pro
 
 echo '关于-添加版本号'
-sed -i "/android:text=/s#=\"#=\"版本号: ${{ env.diy_TIME }}\\\\n\\\\n#" TVBoxOSC/app/src/main/res/layout/dialog_about.xml    # 添加DIY编译时间
+# sed -i "/android:text=/s#=\"#=\"版本号: ${{ env.diy_TIME }}\\\\n\\\\n#" TVBoxOSC/app/src/main/res/layout/dialog_about.xml    # 添加DIY编译时间
+sed -i "/android:text=/s#=\"#=\"版本号: ${ env.diy_TIME }\\\\n\\\\n#" TVBoxOSC/app/src/main/res/layout/dialog_about.xml    # 添加DIY编译时间
 EOF
 chmod +x ./custom.sh
 
