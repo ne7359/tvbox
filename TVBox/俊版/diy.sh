@@ -19,7 +19,7 @@ sed -i "/crosswalk/a\        maven { url 'https://o0halflife0o.github.io/crosswa
 else
 sed -i "/jitpack.io/a\        maven { url 'https://o0halflife0o.github.io/crosswalk/releases/crosswalk/android/maven2' }" TVBoxOSC/build.gradle
 fi
-sed -i "/android:text=/s#=\"#=\"版本号: ${Build_TIME}\\\\n\\\\n#" TVBoxOSC/app/src/main/res/layout/dialog_about.xml
+
 #echo '更改软件包名使共存'
 #sed -i 's/com.github.tvbox.osc.tk/com.github.tvbox.osc.qtm/g' TVBoxOSC/app/build.gradle
 
@@ -107,6 +107,8 @@ cp -f TVBox/img/bg/app_bg.png TVBoxOSC/app/src/main/res/drawable/app_bg.png
 #FongMi的jar支持
 #echo "" >> TVBoxOSC/app/proguard-rules.pro
 #echo "-keep class com.google.gson.**{*;}" >> TVBoxOSC/app/proguard-rules.pro
+echo '关于-插入版本号'
+sed -i "/android:text=/s#=\"#=\"版本号: ${Build_TIME}\\\\n\\\\n#" TVBoxOSC/app/src/main/res/layout/dialog_about.xml
 EOF
 chmod +x ./custom.sh
 
