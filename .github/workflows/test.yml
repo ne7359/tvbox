@@ -18,7 +18,7 @@ on:
       source_branch:
         description: "选择TVBox源分支"
         required: false
-        default: "q215613905"
+        default: "takagen99"
         type: choice
         options:
           - q215613905
