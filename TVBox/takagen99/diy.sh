@@ -44,8 +44,7 @@ sed -i '/targetSdk/d' TVBoxOSC/quickjs/build.gradle
 sed -i '/defaultConfig/a\        minSdk 18' TVBoxOSC/quickjs/build.gradle
 sed -i '/minSdk/a\        targetSdk 26' TVBoxOSC/quickjs/build.gradle
 
-echo '关于-修改并添加编译时间'
-sed -i "/android:text=/s#=\"#=\"版本号: ${{ env.diy_TIME }}\\\\n\\\\n#" TVBoxOSC/app/src/main/res/layout/dialog_about.xml    # 添加DIY编译时间
+echo '关于-修改'
 sed -i '/android:text=/d' TVBoxOSC/app/src/main/res/layout/dialog_about.xml
 sed -i '/shadowRadius=/a\        android:text="        本软件只提供聚合展示功能，所有资源来自网上, 软件不参与任何制作, 上传, 储存, 下载等内容. 软件仅供学习参考, 请于安装后24小时内删除。\\n\\n\\n                                                                    QTM 编译"' TVBoxOSC/app/src/main/res/layout/dialog_about.xml
 
@@ -106,6 +105,9 @@ cp -f TVBox/img/bg/app_bg.png TVBoxOSC/app/src/main/res/drawable/app_bg.png
 #FongMi的jar支持
 #echo "" >> TVBoxOSC/app/proguard-rules.pro
 #echo "-keep class com.google.gson.**{*;}" >> TVBoxOSC/app/proguard-rules.pro
+
+echo '关于-添加版本号'
+sed -i "/android:text=/s#=\"#=\"版本号: ${{ env.diy_TIME }}\\\\n\\\\n#" TVBoxOSC/app/src/main/res/layout/dialog_about.xml    # 添加DIY编译时间
 EOF
 chmod +x ./custom.sh
 
