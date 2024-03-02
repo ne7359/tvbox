@@ -52,8 +52,86 @@ jobs:
           else
             echo "检查custom.sh文件不存在."
           fi
+
+      #- name: 压缩 修改后的源代码
+      #  working-directory: TVBoxOSC
+      #  run: |
+      #    tar -cJf DIYsource.tar.xz --exclude=.git --exclude=.github *
+
+      - name: 添加 arm64-v8a 支持
+        if: ${{ inputs.android_arm64 }}
+        working-directory: ${{ github.workspace }}
+        run: |
+          source ./arm64-v8a.sh
+
+      - name: 添加 x86 支持
+        if: ${{ inputs.android_x86 }}
+        working-directory: ${{ github.workspace }}
+        run: |
+          source ./add-X86.sh
+
+      - name: 添加 PY 支持
+        if: ${{ inputs.add_py }}
+        working-directory: ${{ github.workspace }}
+        run: |         
+          source ./add-py.sh
+
       - name: 给软件签名
         working-directory: ${{ github.workspace }}
         run: |         
           source ./ApkSign.sh
-          echo cat'dialog_about.xml'
+
+      #- name: Setup JDK
+      #  uses: actions/setup-java@v4
+      #  with:
+      #    distribution: temurin
+      #    java-version: ${{ env.javaVersion }} #用于自定义版本，修改diy.sh 变量javaVersion=版本号
+      - name: 检查JAVA版本 安装JDK
+        working-directory: TVBoxOSC
+        run: |
+          setup_java_ver=$(grep -o 'JavaVersion.VERSION_[0-9_]\+' app/build.gradle |head -1 |sed 's/.*_//')
+          if [ $setup_java_ver -gt 11 ]; then
+            echo "setup_java_ver=$setup_java_ver" >> $GITHUB_ENV
+          fi
+      - uses: actions/setup-java@v4
+        if: ${{ env.setup_java_ver }}
+        with:
+          distribution: temurin
+          java-version: ${{ env.setup_java_ver }}
+
+      - name: 安装 Gradle
+        uses: gradle/gradle-build-action@v3
+
+      - name: 使用 Gradle 构建
+        working-directory: TVBoxOSC
+        run: |
+          chmod +x gradlew
+          ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode all
+
+      - name: 准备应用程序
+        working-directory: TVBoxOSC
+        run: |
+          rm -rf apk/
+          mkdir -p apk/
+          #for file in `find ~ -name "*release*.apk" -print`; do
+          for file in `find ~ -name "*.apk" -print`; do
+            mv "$file" apk/QTM-${{ env.sourceName }}.apk
+            break
+          done
+
+      - name: 上传 APK 到 Release
+        uses: ncipollo/release-action@main
+        env:
+           GITHUB_TOKEN: ${{ secrets.GIT_USER_TOKEN }}
+        with:
+          name: QTM影视
+          tag: ${{ env.tag }}
+          allowUpdates: true
+          removeArtifacts: true
+          body: |
+            ★ 源码分支：${{ inputs.source_branch }}
+            
+            🎈 编译时间：${{ env.tag }}
+
+          artifacts: |
+            TVBoxOSC/apk/*.apk
