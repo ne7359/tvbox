@@ -138,15 +138,17 @@ jobs:
             TVBoxOSC/apk/*.apk
 
       - name: 删除运行记录
-        uses: Mattraks/delete-workflow-runs@v2
+        uses: Mattraks/delete-workflow-runs@main
         with:
           retain_days: 1     #保留最后多少记录不删除
-          keep_minimum_runs: 0
+          keep_minimum_runs: 1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIT_USER_TOKEN }}
         
       - name: 删除自动发布的旧固件
         uses: dev-drprasad/delete-older-releases@v0.3.2
         with:
           keep_latest: 6        #保留多少个releases不删除
-          delete_tags: true
+          delete_tag_pattern: true
         env:
           GITHUB_TOKEN: ${{ secrets.GIT_USER_TOKEN }}
