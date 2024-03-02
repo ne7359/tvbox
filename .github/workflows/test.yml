@@ -31,7 +31,7 @@ jobs:
     name: 编译 ${{ inputs.source_branch }}
 
     steps:
-      - name: Checkout
+      - name: 读取仓库文件
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 
@@ -53,7 +53,6 @@ jobs:
           else
             echo "检查custom.sh文件不存在."
           fi
-          sed -i "/android:text=/s#=\"#=\"版本号: ${{ env.diy_TIME }}\\\\n\\\\n#" TVBoxOSC/app/src/main/res/layout/dialog_about.xml
 
       #- name: 压缩 修改后的源代码
       #  working-directory: TVBoxOSC
