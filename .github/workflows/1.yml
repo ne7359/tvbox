@@ -1,0 +1,58 @@
+name: 编译Diy
+on:
+  workflow_dispatch:
+    inputs:
+      android_arm64:
+        description: '打勾✅添加arm64支持不支持ijk解码'
+        required: false
+        type: boolean
+      android_x86:
+        description: '打勾✅添加android for PC x86支持'
+        required: false
+        type: boolean
+      add_py:
+        description: '打勾✅添加PY支持'
+        required: false
+        type: boolean
+      source_branch:
+        description: "选择TVBox源分支"
+        required: false
+        default: "俊版"
+        type: choice
+        options:
+          - q215613905
+          - 俊版
+          - mlabalabala
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: 编译 ${{ inputs.source_branch }}
+
+    steps:
+      - name: 读取仓库文件到 ${{ github.workspace }}
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 
+
+      - name: 设置 DIY
+        working-directory: ${{ github.workspace }}
+        run: |
+         chmod +x TVBox/${{ inputs.source_branch }}/diy.sh
+         source TVBox/${{ inputs.source_branch }}/diy.sh
+
+      - name: 拉取源并修改源代码
+        working-directory: ${{ github.workspace }}
+        run: |
+          git clone -b main --depth=1 ${{ env.sourceURL }} TVBoxOSC
+          chmod +x ./TVBoxOSC
+          if [[ -f "./TVBoxOSC/app/build.gradle" && -f "./custom.sh" ]]; then
+            chmod +x ./custom.sh
+            ./custom.sh
+          else
+            echo "检查custom.sh文件不存在."
+          fi
+      - name: 给软件签名
+        working-directory: ${{ github.workspace }}
+        run: |         
+          source ./ApkSign.sh
