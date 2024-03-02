@@ -31,7 +31,7 @@ jobs:
     name: 编译 ${{ inputs.source_branch }}
 
     steps:
-      - name: 读取仓库文件
+      - name: 读取仓库文件 ${{ github.workspace }}
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 
