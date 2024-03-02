@@ -8,7 +8,7 @@ echo "sourceName=T" >> $GITHUB_ENV
 echo "diy_TIME=$(date "+%Y.%m.%d")" >> $GITHUB_ENV   # 添加版本号编译时间变量
 echo '生成日期完成'
 
-export TIME_VALUE="$(date "+%Y.%m.%d")"
+export Build_TIME="$(date "+%Y.%m.%d")"
 
 touch ./custom.sh
 cat << 'EOF' > ./custom.sh
@@ -19,7 +19,7 @@ sed -i "/crosswalk/a\        maven { url 'https://o0halflife0o.github.io/crosswa
 else
 sed -i "/jitpack.io/a\        maven { url 'https://o0halflife0o.github.io/crosswalk/releases/crosswalk/android/maven2' }" TVBoxOSC/build.gradle
 fi
-sed -i "/android:text=/s#=\"#=\"版本号: ${TIME_VALUE}\\\\n\\\\n#" TVBoxOSC/app/src/main/res/layout/dialog_about.xml
+sed -i "/android:text=/s#=\"#=\"版本号: ${Build_TIME}\\\\n\\\\n#" TVBoxOSC/app/src/main/res/layout/dialog_about.xml
 #echo '更改软件包名使共存'
 #sed -i 's/com.github.tvbox.osc.tk/com.github.tvbox.osc.qtm/g' TVBoxOSC/app/build.gradle
 
