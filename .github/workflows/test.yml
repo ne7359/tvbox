@@ -33,7 +33,8 @@ jobs:
     steps:
       - name: 读取仓库文件            # 到${{ github.workspace }}
         uses: actions/checkout@v4
-        #with:
+        with:
+          fetch-depth: 0
           #sparse-checkout: |
             #.github
             #TVBox
