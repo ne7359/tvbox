@@ -56,7 +56,7 @@ jobs:
           else
             echo "检查custom.sh文件不存在."
           fi
-          sed -i "/android:text=/s#=\"#=\"版本号: ${{ env.diy_TIME }}\\\\n\\\\n#" TVBoxOSC/app/src/main/res/layout/dialog_about.xml    # 添加DIY编译时间
+          sed -i "/android:text=/s#=\"#=\"版本号: ${{ env.diy_TIME }}\\\\n\\\\n#" TVBoxOSC/app/src/main/res/layout/dialog_about.xml    # 添加版本号为DIY编译时间
 
       #- name: 压缩 修改后的源代码
       #  working-directory: TVBoxOSC
