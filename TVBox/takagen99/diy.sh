@@ -158,6 +158,7 @@ touch ./arm64-v8a.sh
 cat << 'EOF' > ./arm64-v8a.sh
 #!/bin/bash
 sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" TVBoxOSC/app/build.gradle
+sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'arm64-v8a'#" TVBoxOSC/player/build.gradle
 echo '添加arm64-v8a完成'
 EOF
 chmod +x ./arm64-v8a.sh
@@ -167,6 +168,7 @@ touch ./add-X86.sh
 cat << 'EOF' > ./add-X86.sh
 #!/bin/bash
 sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'x86', 'x86_64'#" TVBoxOSC/app/build.gradle
+sed -i "/armeabi-v7a[\'\"]$/s#\$#, 'x86', 'x86_64'#" TVBoxOSC/player/build.gradle
 echo '添加add-X86完成'
 EOF
 chmod +x ./add-X86.sh
