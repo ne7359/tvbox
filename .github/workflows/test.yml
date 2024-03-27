@@ -48,7 +48,8 @@ jobs:
       - name: 拉取源并修改源代码
         working-directory: ${{ github.workspace }}
         run: |
-          git clone -b main --depth=1 ${{ env.sourceURL }} TVBoxOSC
+          # git clone -b main --depth=1 ${{ env.sourceURL }} TVBoxOSC
+          git clone ${{ env.sourceURL }} TVBoxOSC
           chmod +x ./TVBoxOSC
           if [[ -f "./TVBoxOSC/app/build.gradle" && -f "./custom.sh" ]]; then
             chmod +x ./custom.sh
