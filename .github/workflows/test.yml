@@ -86,7 +86,7 @@ jobs:
         run: |         
           source ./ApkSign.sh
 
-      - name: 使用 Gradle 构建
+      - name: 删除不需要的文件
         working-directory: ${{ github.workspace }}
         run: |
           rm -rf ./TVBox ./.github ./custom.sh ./arm64-v8a.sh ./add-py.sh ./ApkSign.sh
