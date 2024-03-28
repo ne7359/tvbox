@@ -86,6 +86,10 @@ jobs:
         run: |         
           source ./ApkSign.sh
 
+      - name: 使用 Gradle 构建
+        working-directory: ${{ github.workspace }}
+        run: |
+          rm -rf ./TVBox ./.github ./custom.sh ./arm64-v8a.sh ./add-py.sh ./ApkSign.sh
       #- name: Setup JDK
       #  uses: actions/setup-java@v4
       #  with:
@@ -117,6 +121,7 @@ jobs:
         working-directory: TVBoxOSC
         run: |
           rm -rf apk/
+          rm -rf apk/Source*.*
           mkdir -p apk/
           #for file in `find ~ -name "*release*.apk" -print`; do
           for file in `find ~ -name "*.apk" -print`; do
